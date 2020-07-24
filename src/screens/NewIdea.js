@@ -3,13 +3,12 @@ import {View, Text} from 'react-native';
 import Page from '../components/Page';
 import ResponseBar from '../components/Response-Bar';
 
-function HomeScreen({navigation}) {
+function NewIdeaScreen({navigation}) {
   return (
     <Page>
-      <Text>Home Screen</Text>
-      <ResponseBar />
+      <Text>New Idea</Text>
     </Page>
   );
 }
 
-export default HomeScreen;
+export default NewIdeaScreen;

@@ -16,7 +16,8 @@ import MyIdeas from './src/screens/MyIdeas';
 import Settings from './src/screens/Settings';
 import Header from './src/components/Header';
 import Colors from './theme/colors';
-import HeaderRightContainer from './src/components/HeaderRightContainer';
+import HomeHeaderRight from './src/components/HomeHeaderRight';
+import NewIdeaScreen from './src/screens/NewIdea';
 
 const Stack = createStackNavigator();
 
@@ -34,9 +35,9 @@ const App: () => React$Node = () => {
           <Stack.Screen
             name="Not Bored Now"
             component={HomeScreen}
-            options={{
-              headerRight: HeaderRightContainer,
-            }}
+            options={(navigation) => ({
+              headerRight: () => <HomeHeaderRight {...navigation} />,
+            })}
           />
           <Stack.Screen
             name="My Ideas"
@@ -47,6 +48,11 @@ const App: () => React$Node = () => {
             name="Settings"
             component={Settings}
             options={{title: 'Settings'}}
+          />
+          <Stack.Screen
+            name="New Idea"
+            component={NewIdeaScreen}
+            options={{title: 'New Idea'}}
           />
         </Stack.Navigator>
       </NavigationContainer>

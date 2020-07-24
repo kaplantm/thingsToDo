@@ -3,16 +3,24 @@ import {View, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../theme/colors';
 
-function HeaderRightContainer() {
+function HomeHeaderRight({navigation}) {
+  function goToMyIdeas() {
+    navigation.push('My Ideas');
+  }
+  function goToNewIdea() {
+    navigation.push('New Idea');
+  }
   return (
     <View style={styles.container}>
       <Icon
+        onPress={goToNewIdea}
         name="edit"
         style={styles.icon}
         size={30}
         color={Colors.lightestGreyscale}
       />
       <Icon
+        onPress={goToMyIdeas}
         name="filter-list"
         style={styles.icon}
         size={30}
@@ -44,4 +52,4 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
-export default HeaderRightContainer;
+export default HomeHeaderRight;
