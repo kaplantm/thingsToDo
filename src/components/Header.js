@@ -18,7 +18,7 @@ function Header() {
 const styles = StyleSheet.create({
   container: {
     paddingLeft: 20,
-    paddingBottom: 0,
+    paddingBottom: 20,
     padding: 10,
     backgroundColor: 'red',
   },
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     letterSpacing: 1,
-    fontStyle: 'italic',
+    // fontStyle: 'italic',
   },
 });
 

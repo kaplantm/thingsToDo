@@ -17,14 +17,14 @@ function HomeHeaderRight({navigation}) {
         name="edit"
         style={styles.icon}
         size={30}
-        color={Colors.lightestGreyscale}
+        color={Colors.defaultPrimary}
       />
       <Icon
         onPress={goToMyIdeas}
         name="filter-list"
         style={styles.icon}
         size={30}
-        color={Colors.lightestGreyscale}
+        color={Colors.defaultPrimary}
       />
     </View>
   );

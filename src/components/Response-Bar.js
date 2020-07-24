@@ -30,11 +30,10 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'space-between',
     margin: 20,
-    marginBottom: 40,
   },
   icon: {
-    marginRight: 10,
-    marginLeft: 10,
+    marginRight: 20,
+    marginLeft: 20,
   },
 });
 export default ResponseBar;

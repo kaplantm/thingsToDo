@@ -4,12 +4,16 @@ import Colors from '../../theme/colors';
 
 function Page({children}) {
   return (
-    <SafeAreaView
-      style={[styles.pageSafeArea, {backgroundColor: Colors.darkPrimary}]}>
-      <View style={[styles.page, {backgroundColor: Colors.lightestGreyscale}]}>
-        {children}
-      </View>
-    </SafeAreaView>
+    <>
+      <SafeAreaView
+        style={[styles.pageSafeArea, {backgroundColor: Colors.darkPrimary}]}>
+        <View
+          style={[styles.page, {backgroundColor: Colors.lightestGreyscale}]}>
+          {children}
+        </View>
+      </SafeAreaView>
+      <SafeAreaView style={{backgroundColor: Colors.lightestGreyscale}} />
+    </>
   );
 }
 
@@ -19,12 +23,10 @@ const styles = StyleSheet.create({
   },
   page: {
     flex: 1,
-    margin: 20,
-    marginTop: 50,
-    borderRadius: 20,
-    borderTopRightRadius: 5,
-    borderTopLeftRadius: 5,
+    borderTopRightRadius: 0,
+    borderTopLeftRadius: 0,
     padding: 10,
+    paddingTop: 20,
   },
 });
 

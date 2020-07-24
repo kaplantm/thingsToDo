@@ -28,15 +28,28 @@ const App: () => React$Node = () => {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
-            headerTitle: null,
-            headerTransparent: true,
-            headerStyle: styles.headerStyle,
+            initialRouteName: 'MyIdeas', // TODO: all route na,es as const
+            // headerTitle: null,
+            headerStyle: [
+              styles.headerStyle,
+              {backgroundColor: Colors.lightestGreyscale},
+            ],
+            headerBackTitleVisible: false,
+            headerBackImage: () => (
+              <Icon
+                style={styles.backArrow}
+                name="arrow-back"
+                size={30}
+                color={Colors.defaultPrimary}
+              />
+            ),
           }}>
           <Stack.Screen
             name="Not Bored Now"
             component={HomeScreen}
             options={(navigation) => ({
               headerRight: () => <HomeHeaderRight {...navigation} />,
+              headerTitle: null,
             })}
           />
           <Stack.Screen
@@ -63,6 +76,18 @@ const App: () => React$Node = () => {
 const styles = StyleSheet.create({
   headerStyle: {
     height: 50,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
+
+    elevation: 5,
+  },
+  backArrow: {
+    marginLeft: 20,
   },
 });
 
