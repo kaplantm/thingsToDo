@@ -1,16 +1,11 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {Provider} from 'react-redux';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import store from './src/redux/store';
 import HomeScreen from './src/screens/Home';
 import MyIdeas from './src/screens/MyIdeas';
 import Settings from './src/screens/Settings';
@@ -23,7 +18,7 @@ const Stack = createStackNavigator();
 
 const App: () => React$Node = () => {
   return (
-    <>
+    <Provider store={store}>
       <Header />
       <NavigationContainer>
         <Stack.Navigator
@@ -69,7 +64,7 @@ const App: () => React$Node = () => {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </>
+    </Provider>
   );
 };
 
