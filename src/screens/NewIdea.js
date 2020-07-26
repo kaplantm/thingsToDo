@@ -1,15 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { View, Text, Switch, StyleSheet, TextInput } from 'react-native';
 import Page from '../components/Page';
-import ResponseBar from '../components/Response-Bar';
 import Colors, { hslaToTransparent } from '../../theme/colors';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { addIdea } from '../redux/slices/ideas';
 
-function NewIdeaScreen({ navigation }) {
-  const [value, onChangeText] = useState('');
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+const initialState = {
+  text: '',
+  isEnabled: false,
+  isSaved: false,
+};
+function NewIdeaScreen({ navigation, doAddIdea }) {
+  const [state, setState] = useState(initialState);
+  // const [isEnabled, setIsEnabled] = useState(false);
+  // const [isSaved, setIsSaved] = useState(false);
+  const toggleSwitch = () =>
+    setState((previousState) => ({
+      ...previousState,
+      isEnabled: !previousState.isEnabled,
+    }));
 
+  function onClickSave() {
+    if (state.isEnabled) {
+      console.log('TODO: send to server');
+    }
+    doAddIdea({ text: state.text });
+    setState((previousState) => ({
+      ...previousState,
+      isSaved: true,
+    }));
+
+    setTimeout(() => setState(initialState), 1000);
+  }
+  function onChangeText(text) {
+    setState((previousState) => ({
+      ...previousState,
+      text,
+    }));
+  }
   return (
     <Page withDismissKeyboard>
       <View style={styles.container}>
@@ -22,8 +51,8 @@ function NewIdeaScreen({ navigation }) {
           maxLength={100}
           multiline
           style={styles.textInput}
-          onChangeText={(text) => onChangeText(text)}
-          value={value}
+          onChangeText={onChangeText}
+          value={state.text}
           placeholder="Type your idea here..."
         />
 
@@ -34,18 +63,25 @@ function NewIdeaScreen({ navigation }) {
               true: Colors.medPrimary,
             }}
             onValueChange={toggleSwitch}
-            value={isEnabled}
+            value={state.isEnabled}
           />
           <Text style={[styles.info, styles.marginLeft]}>
             Submit to app (public for everyone to see).
           </Text>
         </View>
 
-        <TouchableOpacity style={[styles.saveBtn, !value && styles.disabled]}>
-          <Text style={styles.saveBtnText}>Save</Text>
+        <TouchableOpacity
+          onPress={state.isSaved ? null : onClickSave}
+          style={[
+            styles.saveBtn,
+            (!state.text || state.isSaved) && styles.disabled,
+          ]}>
+          <Text style={styles.saveBtnText}>
+            {state.isSaved ? 'Saved!' : 'Save'}
+          </Text>
         </TouchableOpacity>
       </View>
-      {isEnabled && (
+      {state.isEnabled && (
         <View style={styles.weWillReviewContainer}>
           <Text style={[styles.info, styles.weWillReview]}>
             We will review your idea and consider adding it to our next release
@@ -71,9 +107,10 @@ const styles = StyleSheet.create({
     backgroundColor: hslaToTransparent(Colors.lightestGreyscale, 0.1),
     borderColor: hslaToTransparent(Colors.lightestGreyscale, 0.4),
     borderWidth: 1,
+    marginTop: 0,
     margin: 20,
     padding: 10,
-    borderRadius: 10,
+    borderRadius: 5,
   },
   info: {
     color: Colors.darkPrimary,
@@ -133,4 +170,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NewIdeaScreen;
+export default connect(null, {
+  doAddIdea: addIdea,
+})(NewIdeaScreen);

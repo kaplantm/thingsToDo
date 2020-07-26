@@ -7,8 +7,16 @@ const ideasSlice = createSlice({
   initialState: defaultIdeas,
   reducers: {
     addIdea(state, action) {
-      const { id, text } = action.payload;
-      state.push({ id, isCustom: true, text, icon: null, categories: [] });
+      const { text } = action.payload;
+      state.push({
+        id: new Date().getTime(),
+        isCustom: true,
+        disliked: false,
+        liked: true,
+        text,
+        icon: '⭐️',
+        categories: [],
+      });
       return state;
     },
     deleteIdea(state, action) {

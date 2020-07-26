@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { View, Text, StyleSheet } from 'react-native';
 import Page from '../components/Page';
-import ResponseBar from '../components/Response-Bar';
-import IdeaCarousel from '../components/IdeaCarousel';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Colors, { hslaToTransparent } from '../../theme/colors';
+
 function HomeScreen({ navigation, ideas }) {
   function goToAllActivityCards() {
     navigation.push('Activity Cards'); // TODO: strings const
