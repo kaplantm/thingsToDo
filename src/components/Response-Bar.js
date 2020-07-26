@@ -30,43 +30,71 @@ function ResponseBar({
   }
   return (
     <View style={styles.container}>
-      <Icon
+      <TouchableOpacity
         onPress={toggleDislike}
-        style={styles.icon}
-        name="thumb-down"
-        size={60}
-        color={disliked ? Colors.accentPrimary : Colors.defaultPrimary}
-      />
-      <TouchableOpacity onPress={incrementIndex}>
-        <Text style={styles.next}>Next</Text>
+        style={[
+          styles.iconCircle,
+          {
+            backgroundColor: disliked
+              ? Colors.accentPrimary
+              : Colors.lightPrimary,
+          },
+        ]}>
+        <Icon
+          style={styles.icon}
+          name="thumb-down"
+          size={60}
+          color={disliked ? Colors.lightPrimary : Colors.defaultPrimary}
+        />
       </TouchableOpacity>
-      <Icon
+
+      <TouchableOpacity onPress={incrementIndex} style={styles.next}>
+        <Icon
+          style={styles.icon}
+          name="arrow-forward"
+          size={70}
+          color={Colors.lightPrimary}
+        />
+      </TouchableOpacity>
+
+      <TouchableOpacity
         onPress={toggleLike}
-        name="thumb-up"
-        style={styles.icon}
-        size={60}
-        color={liked ? Colors.accentPrimary : Colors.defaultPrimary}
-      />
+        style={[
+          styles.iconCircle,
+          { backgroundColor: liked ? Colors.blue : Colors.lightPrimary },
+        ]}>
+        <Icon
+          name="thumb-up"
+          style={styles.icon}
+          size={60}
+          color={liked ? Colors.lightPrimary : Colors.defaultPrimary}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: 'red',
-    // flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'space-between',
     margin: 20,
   },
+  iconCircle: {
+    borderRadius: 100,
+    backgroundColor: Colors.lightPrimary,
+    paddingTop: 18,
+    paddingBottom: 18,
+  },
+  next: {
+    paddingTop: 13,
+    paddingBottom: 13,
+    opacity: 0.75,
+  },
   icon: {
     marginRight: 20,
     marginLeft: 20,
-  },
-  next: {
-    fontSize: 60,
-    color: 'white',
   },
 });
 

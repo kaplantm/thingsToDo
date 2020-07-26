@@ -14,6 +14,8 @@ store activities by category in reducer
 and save last retreived date
 local storage
 nunito
+shuffle card order
+disable next on last idea card
 
 Roadmap:
 v1 - likes, dislikes, local storage saving, new idea submission
