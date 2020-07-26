@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, Switch, StyleSheet, TextInput} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Switch, StyleSheet, TextInput } from 'react-native';
 import Page from '../components/Page';
 import ResponseBar from '../components/Response-Bar';
-import Colors, {hslaToTransparent} from '../../theme/colors';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import Colors, { hslaToTransparent } from '../../theme/colors';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-function NewIdeaScreen({navigation}) {
+function NewIdeaScreen({ navigation }) {
   const [value, onChangeText] = useState('');
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);

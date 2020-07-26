@@ -1,12 +1,12 @@
-import React, {useEffect, useState, useMemo} from 'react';
-import {connect} from 'react-redux';
+import React, { useEffect, useState, useMemo } from 'react';
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Page from '../components/Page';
 import ResponseBar from '../components/Response-Bar';
 import IdeaCarousel from '../components/IdeaCarousel';
 import Colors from '../../theme/colors';
-import {findIndexOfObjWithAttr} from '../utils';
+import { findIndexOfObjWithAttr } from '../utils';
 
 function filterIdeas(ideas, filterKey, filterValue) {
   return ideas && ideas.length
@@ -26,11 +26,11 @@ const ErrorComponent = () => (
   </Page>
 );
 
-function ActivityCardsScreen({navigation, route, ideas}) {
+function ActivityCardsScreen({ navigation, route, ideas }) {
   const [index, setIndex] = useState(0);
   const [limboIdeas, setLimboIdeas] = useState([]);
-  const {filterKey = 'isCustom', filterValue = false} = route.params || {};
-  console.log({filterKey, filterValue});
+  const { filterKey = 'isCustom', filterValue = false } = route.params || {};
+  console.log({ filterKey, filterValue });
   // TODO: memo the carousel - doesnt care about likes, dislikeds ect
 
   function incrementIndex() {
@@ -52,7 +52,7 @@ function ActivityCardsScreen({navigation, route, ideas}) {
   );
   const isInLimbo = indexInUnstableFilterIdeas === -1;
 
-  console.log({isInLimbo});
+  console.log({ isInLimbo });
   if (index === -1 || !filteredIdeasList || !filteredIdeasList.length) {
     return <ErrorComponent />;
   }
@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(({ideas}) => ({
+export default connect(({ ideas }) => ({
   ideas,
 }))(ActivityCardsScreen);

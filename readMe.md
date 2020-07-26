@@ -6,9 +6,13 @@ like / dislike ideas
 My Ideas - likes / disliked / settings
 
 // TODO:
-local storage
 fix vars for linear gradient
+add new idea locally functional
+add new idea remote submission
 button styles for activity slider page
+store activities by category in reducer
+and save last retreived date
+local storage
 nunito
 
 Roadmap:

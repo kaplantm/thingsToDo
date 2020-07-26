@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {connect} from 'react-redux';
+import { View, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../theme/colors';
-import {toggleLikeIdea, toggleDislikeIdea} from '../redux/slices/ideas';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {findIndexOfObjWithId} from '../utils';
+import { toggleLikeIdea, toggleDislikeIdea } from '../redux/slices/ideas';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { findIndexOfObjWithId } from '../utils';
 
 function ResponseBar({
   id,
@@ -16,10 +16,10 @@ function ResponseBar({
   incrementIndex,
 }) {
   function toggleDislike() {
-    doToggleDislikeIdea({id});
+    doToggleDislikeIdea({ id });
   }
   function toggleLike() {
-    doToggleLikeIdea({id});
+    doToggleLikeIdea({ id });
   }
   return (
     <View style={styles.container}>
@@ -68,13 +68,13 @@ const styles = StyleSheet.create({
 });
 
 export default connect(
-  ({ideas}, {id}) => {
+  ({ ideas }, { id }) => {
     const ideaIndex = findIndexOfObjWithId(ideas, id);
     let idea = {};
     if (ideaIndex !== -1) {
       idea = ideas[ideaIndex];
     }
-    console.log('connect', {idea, id});
+    console.log('connect', { idea, id });
     return {
       liked: idea.liked,
       disliked: idea.disliked,

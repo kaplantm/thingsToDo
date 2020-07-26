@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {connect} from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Page from '../components/Page';
 import ResponseBar from '../components/Response-Bar';
 import IdeaCarousel from '../components/IdeaCarousel';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import Colors, {hslaToTransparent} from '../../theme/colors';
-function HomeScreen({navigation, ideas}) {
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Colors, { hslaToTransparent } from '../../theme/colors';
+function HomeScreen({ navigation, ideas }) {
   function goToAllActivityCards() {
     navigation.push('Activity Cards'); // TODO: strings const
   }
@@ -15,7 +15,10 @@ function HomeScreen({navigation, ideas}) {
     navigation.push('New Idea');
   }
   function goToLiked() {
-    navigation.push('Activity Cards', {filterKey: 'liked', filterValue: true});
+    navigation.push('Activity Cards', {
+      filterKey: 'liked',
+      filterValue: true,
+    });
   }
   function goToDisliked() {
     navigation.push('Activity Cards', {

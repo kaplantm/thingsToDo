@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../theme/colors';
 
-function HomeHeaderRight({navigation}) {
+function HomeHeaderRight({ navigation }) {
   function goToMyIdeas() {
     navigation.push('My Ideas');
   }

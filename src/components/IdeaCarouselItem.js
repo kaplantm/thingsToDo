@@ -1,8 +1,8 @@
-import React, {PureComponent} from 'react';
-import {Dimensions, StyleSheet, Text, Animated, View} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Dimensions, StyleSheet, Text, Animated, View } from 'react-native';
 import Colors from '../../theme/colors';
 
-const {width: screenWidth} = Dimensions.get('window');
+const { width: screenWidth } = Dimensions.get('window');
 const width = screenWidth;
 
 export class CarouselItem extends PureComponent {
@@ -41,7 +41,7 @@ export class CarouselItem extends PureComponent {
             }),
           },
         ]}>
-        <View style={[styles.card, {backgroundColor: Colors.lightPrimary}]}>
+        <View style={[styles.card, { backgroundColor: Colors.lightPrimary }]}>
           <Text style={styles.icon}>{icon}</Text>
           <Text style={styles.text}>{text}</Text>
         </View>

@@ -1,17 +1,18 @@
-import React, {useState} from 'react';
-import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import React, { useState } from 'react';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Page from '../components/Page';
 import Colors from '../../theme/colors';
 
 function MyIdeas() {
-  const [state, setState] = useState({liked: undefined});
+  const [state, setState] = useState({ liked: undefined });
   return (
     <Page>
-      <View style={[styles.tabContainer, {borderColor: Colors.lightGreyscale}]}>
+      <View
+        style={[styles.tabContainer, { borderColor: Colors.lightGreyscale }]}>
         <TouchableOpacity
           onPress={() => {
             console.log('click');
-            setState({liked: undefined});
+            setState({ liked: undefined });
           }}
           style={[
             styles.tab,
@@ -28,7 +29,7 @@ function MyIdeas() {
         <TouchableOpacity
           onPress={() => {
             console.log('click');
-            setState({liked: true});
+            setState({ liked: true });
           }}
           style={[
             styles.tab,
@@ -42,7 +43,7 @@ function MyIdeas() {
           <Text>Liked</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => setState({liked: false})}
+          onPress={() => setState({ liked: false })}
           style={[
             styles.tab,
             styles.lastTab,

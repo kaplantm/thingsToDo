@@ -1,9 +1,9 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
-import {Provider} from 'react-redux';
+import { StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
 import 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import store from './src/redux/store';
 import HomeScreen from './src/screens/Home';
@@ -47,22 +47,22 @@ const App: () => React$Node = () => {
           <Stack.Screen
             name="My Ideas"
             component={MyIdeas}
-            options={{title: 'My Ideas'}}
+            options={{ title: 'My Ideas' }}
           />
           <Stack.Screen
             name="Activity Cards"
             component={ActivityCards}
-            options={{title: 'Activity Cards'}}
+            options={{ title: 'Activity Cards' }}
           />
           <Stack.Screen
             name="Settings"
             component={Settings}
-            options={{title: 'Settings'}}
+            options={{ title: 'Settings' }}
           />
           <Stack.Screen
             name="New Idea"
             component={NewIdeaScreen}
-            options={{title: 'New Idea'}}
+            options={{ title: 'New Idea' }}
           />
         </Stack.Navigator>
       </NavigationContainer>

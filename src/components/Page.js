@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../theme/colors';
 import DismissKeyboard from './DismissKeyboard';
 
-function Page({children, padded = true, withDismissKeyboard}) {
+function Page({ children, padded = true, withDismissKeyboard }) {
   const Wrapper = withDismissKeyboard ? DismissKeyboard : View;
   return (
     <Wrapper style={styles.page}>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
   },
-  padded: {padding: 10},
+  padded: { padding: 10 },
 });
 
 export default Page;
