@@ -18,7 +18,7 @@ function IdeaCarousel({ideas, setIndex}) {
       itemWidth={CarouselItem.WIDTH}
       threshold={CarouselItem.WIDTH / 4}
       extractKey={(item) => item.id.toString()}
-      contentOffset={0}
+      contentOffset={40}
       useNativeDriver={false}
       onIndexChange={(newIndex) => setIndex(newIndex)}
       renderItem={({item, ...rest}) => <CarouselItem {...rest} {...item} />}

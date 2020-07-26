@@ -1,17 +1,20 @@
 import React, {PureComponent} from 'react';
-import {Dimensions, StyleSheet, Text, View} from 'react-native';
+import {Dimensions, StyleSheet, Text, Animated, View} from 'react-native';
 import Colors from '../../theme/colors';
 
 const {width: screenWidth} = Dimensions.get('window');
 const width = screenWidth;
 
 export class CarouselItem extends PureComponent {
-  static WIDTH = width;
+  static WIDTH = width - 80;
+  state = {
+    navigationAnimation: new Animated.Value(0),
+  };
 
   render = () => {
     const {
-      // animatedValue,
-      // itemIndex,
+      animatedValue,
+      itemIndex,
       text,
       icon,
       // categories,
@@ -19,24 +22,38 @@ export class CarouselItem extends PureComponent {
       // disliked,
       // isCustom,
     } = this.props;
-
     return (
-      <View style={styles.container}>
+      <Animated.View
+        style={[
+          styles.container,
+          {
+            opacity: animatedValue.interpolate({
+              inputRange: [itemIndex - 1, itemIndex, itemIndex + 1],
+              outputRange: [0.5, 1, 0.5],
+            }),
+            marginTop: animatedValue.interpolate({
+              inputRange: [itemIndex - 1, itemIndex, itemIndex + 1],
+              outputRange: [20, 0, 20],
+            }),
+          },
+        ]}>
         <View style={[styles.card, {backgroundColor: Colors.lightPrimary}]}>
           <Text style={styles.icon}>{icon}</Text>
           <Text style={styles.text}>{text}</Text>
         </View>
-      </View>
+      </Animated.View>
     );
   };
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: width,
+    // borderWidth: 1,
+    width: CarouselItem.WIDTH,
     justifyContent: 'flex-start',
     overflow: 'visible',
-    padding: 30,
+    padding: 10,
+    paddingTop: 20,
   },
   card: {
     flex: 1,
