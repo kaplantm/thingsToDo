@@ -1,8 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit';
-import ideasSlice from './slices/ideas';
+import ideasReducer from './slices/ideas';
 
+// TODO: save and restore from local storage
 const store = configureStore({
-  reducer: {ideas: ideasSlice.reducer},
+  reducer: {ideas: ideasReducer},
 });
 
 export default store;

@@ -9,6 +9,7 @@ const ideasSlice = createSlice({
     addIdea(state, action) {
       const {id, text} = action.payload;
       state.push({id, isCustom: true, text, icon: null, categories: []});
+      return state;
     },
     deleteIdea(state, action) {
       const {id} = action.payload;
@@ -16,40 +17,36 @@ const ideasSlice = createSlice({
       if (index.isCustom) {
         state.splice(index);
       }
+      return state;
     },
-    likeIdea(state, action) {
+    toggleLikeIdea(state, action) {
       const {id} = action.payload;
       const index = findIndexOfObjWithId(state, id);
+      console.log('reducer like', action.payload, index);
       if (index !== -1) {
         state[index].disliked = false;
-        state[index].liked = true;
+        state[0].liked = !state[index].liked;
       }
+      return state;
     },
-    unlikeIdea(state, action) {
+    toggleDislikeIdea(state, action) {
       const {id} = action.payload;
       const index = findIndexOfObjWithId(state, id);
+      console.log('reducer dislike', action.payload, index);
       if (index !== -1) {
-        state[index].disliked = false;
+        state[index].disliked = !state[index].disliked;
         state[index].liked = false;
       }
-    },
-    dislikeIdea(state, action) {
-      const {id} = action.payload;
-      const index = findIndexOfObjWithId(state, id);
-      if (index !== -1) {
-        state[index].disliked = true;
-        state[index].liked = false;
-      }
-    },
-    undislikeIdea(state, action) {
-      const {id} = action.payload;
-      const index = findIndexOfObjWithId(state, id);
-      if (index !== -1) {
-        state[index].disliked = false;
-        state[index].liked = false;
-      }
+      return state;
     },
   },
 });
 
-export default ideasSlice;
+export const {
+  addIdea,
+  deleteIdea,
+  toggleLikeIdea,
+  toggleDislikeIdea,
+} = ideasSlice.actions;
+
+export default ideasSlice.reducer;
