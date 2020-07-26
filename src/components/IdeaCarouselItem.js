@@ -6,7 +6,7 @@ const {width: screenWidth} = Dimensions.get('window');
 const width = screenWidth;
 
 export class CarouselItem extends PureComponent {
-  static WIDTH = width - 80;
+  static WIDTH = width - 60;
   state = {
     navigationAnimation: new Animated.Value(0),
   };
@@ -33,7 +33,7 @@ export class CarouselItem extends PureComponent {
             }),
             marginTop: animatedValue.interpolate({
               inputRange: [itemIndex - 1, itemIndex, itemIndex + 1],
-              outputRange: [20, 0, 20],
+              outputRange: [30, 0, 30],
             }),
           },
         ]}>

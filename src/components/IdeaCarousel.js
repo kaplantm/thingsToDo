@@ -9,16 +9,17 @@ import {CarouselItem} from './IdeaCarouselItem';
 
 const {width} = Dimensions.get('window');
 
-function IdeaCarousel({ideas, setIndex}) {
+function IdeaCarousel({ideas, setIndex, index}) {
   return (
     <SideSwipe
+      index={index}
       useVelocityForIndex={false}
       data={ideas}
       style={{flex: 1, width}}
       itemWidth={CarouselItem.WIDTH}
       threshold={CarouselItem.WIDTH / 4}
       extractKey={(item) => item.id.toString()}
-      contentOffset={40}
+      contentOffset={30}
       useNativeDriver={false}
       onIndexChange={(newIndex) => setIndex(newIndex)}
       renderItem={({item, ...rest}) => <CarouselItem {...rest} {...item} />}

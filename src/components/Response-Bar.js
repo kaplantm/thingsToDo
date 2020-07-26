@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../theme/colors';
 import {toggleLikeIdea, toggleDislikeIdea} from '../redux/slices/ideas';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 function ResponseBar({
   id,
@@ -11,25 +12,32 @@ function ResponseBar({
   doToggleDislikeIdea,
   liked,
   disliked,
+  incrementIndex,
 }) {
-  console.log({liked, disliked});
+  function toggleDislike() {
+    doToggleDislikeIdea({id});
+  }
+  function toggleLike() {
+    doToggleLikeIdea({id});
+  }
   return (
     <View style={styles.container}>
       <Icon
-        onPress={() => {
-          console.log('dislike idea', id);
-          toggleDislikeIdea({id});
-        }}
+        onPress={toggleDislike}
         style={styles.icon}
         name="thumb-down"
         size={60}
         color={disliked ? Colors.accentPrimary : Colors.defaultPrimary}
       />
-      <Icon
+      <TouchableOpacity
         onPress={() => {
-          console.log('like idea', id);
-          doToggleLikeIdea({id});
-        }}
+          console.log('onpress next', id);
+          incrementIndex();
+        }}>
+        <Text style={styles.next}>Next</Text>
+      </TouchableOpacity>
+      <Icon
+        onPress={toggleLike}
         name="thumb-up"
         style={styles.icon}
         size={60}
@@ -51,6 +59,10 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 20,
     marginLeft: 20,
+  },
+  next: {
+    fontSize: 60,
+    color: 'white',
   },
 });
 

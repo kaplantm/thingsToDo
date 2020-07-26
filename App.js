@@ -9,33 +9,30 @@ import store from './src/redux/store';
 import HomeScreen from './src/screens/Home';
 import MyIdeas from './src/screens/MyIdeas';
 import Settings from './src/screens/Settings';
-import Header from './src/components/Header';
 import Colors from './theme/colors';
 import HomeHeaderRight from './src/components/HomeHeaderRight';
 import NewIdeaScreen from './src/screens/NewIdea';
+import ActivityCards from './src/screens/ActivityCards';
 
 const Stack = createStackNavigator();
 
 const App: () => React$Node = () => {
   return (
     <Provider store={store}>
-      <Header />
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             initialRouteName: 'MyIdeas', // TODO: all route na,es as const
             // headerTitle: null,
-            headerStyle: [
-              styles.headerStyle,
-              {backgroundColor: Colors.lightestGreyscale},
-            ],
+            headerStyle: [styles.headerStyle],
+            headerTitleStyle: [styles.headerTitleStyle],
             headerBackTitleVisible: false,
             headerBackImage: () => (
               <Icon
                 style={styles.backArrow}
                 name="arrow-back"
                 size={30}
-                color={Colors.defaultPrimary}
+                color={Colors.lightPrimary}
               />
             ),
           }}>
@@ -43,14 +40,19 @@ const App: () => React$Node = () => {
             name="Not Bored Now"
             component={HomeScreen}
             options={(navigation) => ({
-              headerRight: () => <HomeHeaderRight {...navigation} />,
-              headerTitle: null,
+              // headerRight: () => <HomeHeaderRight {...navigation} />,
+              headerTitle: 'Things To Do',
             })}
           />
           <Stack.Screen
             name="My Ideas"
             component={MyIdeas}
             options={{title: 'My Ideas'}}
+          />
+          <Stack.Screen
+            name="Activity Cards"
+            component={ActivityCards}
+            options={{title: 'Activity Cards'}}
           />
           <Stack.Screen
             name="Settings"
@@ -70,7 +72,9 @@ const App: () => React$Node = () => {
 
 const styles = StyleSheet.create({
   headerStyle: {
-    height: 50,
+    height: 100,
+    backgroundColor: Colors.defaultPrimary,
+
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -78,8 +82,13 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3,
-
     elevation: 5,
+  },
+  headerTitleStyle: {
+    color: Colors.lightestGreyscale,
+    fontSize: 20,
+    letterSpacing: 1.2,
+    fontWeight: '600',
   },
   backArrow: {
     marginLeft: 20,

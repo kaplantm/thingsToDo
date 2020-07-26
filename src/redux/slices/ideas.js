@@ -22,17 +22,15 @@ const ideasSlice = createSlice({
     toggleLikeIdea(state, action) {
       const {id} = action.payload;
       const index = findIndexOfObjWithId(state, id);
-      console.log('reducer like', action.payload, index);
       if (index !== -1) {
         state[index].disliked = false;
-        state[0].liked = !state[index].liked;
+        state[index].liked = !state[index].liked;
       }
       return state;
     },
     toggleDislikeIdea(state, action) {
       const {id} = action.payload;
       const index = findIndexOfObjWithId(state, id);
-      console.log('reducer dislike', action.payload, index);
       if (index !== -1) {
         state[index].disliked = !state[index].disliked;
         state[index].liked = false;

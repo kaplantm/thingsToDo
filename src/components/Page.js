@@ -1,23 +1,28 @@
 import React from 'react';
 import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../theme/colors';
+import DismissKeyboard from './DismissKeyboard';
 
-function Page({children, padded = true}) {
+function Page({children, padded = true, withDismissKeyboard}) {
+  const Wrapper = withDismissKeyboard ? DismissKeyboard : View;
   return (
-    <>
-      <SafeAreaView
-        style={[styles.page, {backgroundColor: Colors.darkPrimary}]}>
-        <View
-          style={[
-            styles.page,
-            padded && styles.padded,
-            {backgroundColor: Colors.lightestGreyscale},
-          ]}>
-          {children}
-        </View>
-      </SafeAreaView>
-      <SafeAreaView style={{backgroundColor: Colors.lightestGreyscale}} />
-    </>
+    <Wrapper style={styles.page}>
+      <LinearGradient
+        colors={['#4c669f', '#3b5998', '#192f6a']}
+        style={styles.page}>
+        <SafeAreaView style={[styles.page]}>
+          <View
+            style={[
+              styles.page,
+              padded && styles.padded,
+              // {backgroundColor: Colors.lightestGreyscale},
+            ]}>
+            {children}
+          </View>
+        </SafeAreaView>
+      </LinearGradient>
+    </Wrapper>
   );
 }
 
