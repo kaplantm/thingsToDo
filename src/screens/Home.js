@@ -18,18 +18,21 @@ function HomeScreen({ navigation, ideas }) {
     navigation.push('Activity Cards', {
       filterKey: 'liked',
       filterValue: true,
+      title: 'Liked Ideas',
     });
   }
   function goToDisliked() {
     navigation.push('Activity Cards', {
       filterKey: 'disliked',
       filterValue: true,
+      title: 'Disliked Ideas',
     });
   }
   function goToMyIdeas() {
     navigation.push('Activity Cards', {
       filterKey: 'isCustom',
       filterValue: true,
+      title: 'My Ideas',
     });
   }
   return (
@@ -45,7 +48,7 @@ function HomeScreen({ navigation, ideas }) {
         <View style={styles.myStuffContainer}>
           <TouchableOpacity
             style={[styles.btnContainer, styles.myIdeas]}
-            onPress={goToAllActivityCards}>
+            onPress={goToMyIdeas}>
             <Text style={styles.btnText}>My Ideas</Text>
           </TouchableOpacity>
           <View style={styles.row}>

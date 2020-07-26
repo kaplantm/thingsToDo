@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { View, Text, StyleSheet } from 'react-native';
@@ -26,9 +26,19 @@ const ErrorComponent = () => (
 );
 
 function ActivityCardsScreen({ navigation, route, ideas }) {
+  const {
+    filterKey = 'isCustom',
+    filterValue = false,
+    title = 'Explore Ideas',
+  } = route.params || {};
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: title,
+    });
+  }, [navigation, title]);
+
   const [index, setIndex] = useState(0);
   const [limboIdeas, setLimboIdeas] = useState([]);
-  const { filterKey = 'isCustom', filterValue = false } = route.params || {};
 
   function incrementIndex() {
     setIndex(index + 1);
