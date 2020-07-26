@@ -11,7 +11,6 @@ function MyIdeas() {
         style={[styles.tabContainer, { borderColor: Colors.lightGreyscale }]}>
         <TouchableOpacity
           onPress={() => {
-            console.log('click');
             setState({ liked: undefined });
           }}
           style={[
@@ -28,7 +27,6 @@ function MyIdeas() {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            console.log('click');
             setState({ liked: true });
           }}
           style={[

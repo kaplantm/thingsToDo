@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -14,7 +14,14 @@ function ResponseBar({
   liked,
   disliked,
   incrementIndex,
+  conditionalAddToLimbo,
+  fullListIdeaIndex,
 }) {
+  useEffect(() => {
+    conditionalAddToLimbo(fullListIdeaIndex);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [liked, disliked, fullListIdeaIndex]);
+
   function toggleDislike() {
     doToggleDislikeIdea({ id });
   }
@@ -30,11 +37,7 @@ function ResponseBar({
         size={60}
         color={disliked ? Colors.accentPrimary : Colors.defaultPrimary}
       />
-      <TouchableOpacity
-        onPress={() => {
-          console.log('onpress next', id);
-          incrementIndex();
-        }}>
+      <TouchableOpacity onPress={incrementIndex}>
         <Text style={styles.next}>Next</Text>
       </TouchableOpacity>
       <Icon
@@ -74,8 +77,8 @@ export default connect(
     if (ideaIndex !== -1) {
       idea = ideas[ideaIndex];
     }
-    console.log('connect', { idea, id });
     return {
+      fullListIdeaIndex: ideaIndex,
       liked: idea.liked,
       disliked: idea.disliked,
     };
