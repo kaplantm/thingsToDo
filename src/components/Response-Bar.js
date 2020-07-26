@@ -25,7 +25,7 @@ function ResponseBar() {
 const styles = StyleSheet.create({
   container: {
     // backgroundColor: 'red',
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'space-between',

@@ -6,7 +6,7 @@ function Page({children}) {
   return (
     <>
       <SafeAreaView
-        style={[styles.pageSafeArea, {backgroundColor: Colors.darkPrimary}]}>
+        style={[styles.page, {backgroundColor: Colors.darkPrimary}]}>
         <View
           style={[styles.page, {backgroundColor: Colors.lightestGreyscale}]}>
           {children}
@@ -18,15 +18,8 @@ function Page({children}) {
 }
 
 const styles = StyleSheet.create({
-  pageSafeArea: {
-    flex: 1,
-  },
   page: {
     flex: 1,
-    borderTopRightRadius: 0,
-    borderTopLeftRadius: 0,
-    padding: 10,
-    paddingTop: 20,
   },
 });
 
