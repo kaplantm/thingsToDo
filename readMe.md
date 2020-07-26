@@ -10,3 +10,8 @@ local storage
 fix vars for linear gradient
 button styles for activity slider page
 nunito
+
+Roadmap:
+v1 - likes, dislikes, local storage saving, new idea submission
+v2 - categories
+v3 - more settings

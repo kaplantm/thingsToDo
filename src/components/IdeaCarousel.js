@@ -9,7 +9,7 @@ import {CarouselItem} from './IdeaCarouselItem';
 
 const {width} = Dimensions.get('window');
 
-function IdeaCarousel({ideas, setIndex, index}) {
+function IdeaCarousel({ideas, setIndex, index, isInLimbo}) {
   return (
     <SideSwipe
       index={index}
@@ -22,7 +22,9 @@ function IdeaCarousel({ideas, setIndex, index}) {
       contentOffset={30}
       useNativeDriver={false}
       onIndexChange={(newIndex) => setIndex(newIndex)}
-      renderItem={({item, ...rest}) => <CarouselItem {...rest} {...item} />}
+      renderItem={({item, ...rest}) => (
+        <CarouselItem {...rest} {...item} isInLimbo={isInLimbo} />
+      )}
     />
   );
 }

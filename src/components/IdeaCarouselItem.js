@@ -17,11 +17,15 @@ export class CarouselItem extends PureComponent {
       itemIndex,
       text,
       icon,
+      isInLimbo,
       // categories,
       // liked,
       // disliked,
       // isCustom,
     } = this.props;
+    const minOpacity = isInLimbo ? 0.25 : 0.5;
+    const maxOpacity = isInLimbo ? 0.5 : 1;
+
     return (
       <Animated.View
         style={[
@@ -29,7 +33,7 @@ export class CarouselItem extends PureComponent {
           {
             opacity: animatedValue.interpolate({
               inputRange: [itemIndex - 1, itemIndex, itemIndex + 1],
-              outputRange: [0.5, 1, 0.5],
+              outputRange: [minOpacity, maxOpacity, minOpacity],
             }),
             marginTop: animatedValue.interpolate({
               inputRange: [itemIndex - 1, itemIndex, itemIndex + 1],
