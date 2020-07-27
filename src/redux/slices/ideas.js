@@ -1,14 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 import defaultIdeas from '../../constants/defaultIdeas';
-import { findIndexOfObjWithId } from '../../utils';
+import { findIndexOfObjWithId } from '../../lib/utils';
 
 const ideasSlice = createSlice({
   name: 'ideas',
-  initialState: defaultIdeas,
+  initialState: {
+    publicIdeas: defaultIdeas,
+    customIdeas: [],
+    ideaSentimentMap: {},
+  },
   reducers: {
+    setPublicIdeas(state, action) {
+      const { publicIdeas } = action.payload;
+      state.publicIdeas = publicIdeas;
+      return state;
+    },
     addIdea(state, action) {
       const { text } = action.payload;
-      state.push({
+      state.customIdeas.push({
         id: new Date().getTime(),
         isCustom: true,
         disliked: false,
@@ -23,26 +32,14 @@ const ideasSlice = createSlice({
       const { id } = action.payload;
       const index = findIndexOfObjWithId(state, id);
       if (index.isCustom) {
-        state.splice(index);
+        state.customIdeas.splice(index);
       }
       return state;
     },
-    toggleLikeIdea(state, action) {
-      const { id } = action.payload;
-      const index = findIndexOfObjWithId(state, id);
-      if (index !== -1) {
-        state[index].disliked = false;
-        state[index].liked = !state[index].liked;
-      }
-      return state;
-    },
-    toggleDislikeIdea(state, action) {
-      const { id } = action.payload;
-      const index = findIndexOfObjWithId(state, id);
-      if (index !== -1) {
-        state[index].disliked = !state[index].disliked;
-        state[index].liked = false;
-      }
+    setIdeaSentiment(state, action) {
+      const { id, sentiment } = action.payload;
+      state.ideaSentimentMap[id] = sentiment;
+      console.log(' state.ideaSentimentMa', state.ideaSentimentMap);
       return state;
     },
   },
@@ -51,8 +48,8 @@ const ideasSlice = createSlice({
 export const {
   addIdea,
   deleteIdea,
-  toggleLikeIdea,
-  toggleDislikeIdea,
+  setIdeaSentiment,
+  setPublicIdeas,
 } = ideasSlice.actions;
 
 export default ideasSlice.reducer;

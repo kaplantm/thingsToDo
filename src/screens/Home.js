@@ -14,22 +14,19 @@ function HomeScreen({ navigation, ideas }) {
   }
   function goToLiked() {
     navigation.push('Activity Cards', {
-      filterKey: 'liked',
-      filterValue: true,
+      filterRequirement: { isCustom: false, liked: true },
       title: 'Liked Ideas',
     });
   }
   function goToDisliked() {
     navigation.push('Activity Cards', {
-      filterKey: 'disliked',
-      filterValue: true,
+      filterRequirement: { isCustom: false, disliked: true },
       title: 'Disliked Ideas',
     });
   }
   function goToMyIdeas() {
     navigation.push('Activity Cards', {
-      filterKey: 'isCustom',
-      filterValue: true,
+      filterRequirement: { isCustom: true },
       title: 'My Ideas',
     });
   }

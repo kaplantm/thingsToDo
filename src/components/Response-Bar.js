@@ -3,30 +3,44 @@ import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../theme/colors';
-import { toggleLikeIdea, toggleDislikeIdea } from '../redux/slices/ideas';
+import { setIdeaSentiment } from '../redux/slices/ideas';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { findIndexOfObjWithId } from '../utils';
+import { findIndexOfObjWithId } from '../lib/utils';
+import {
+  getIsDisliked,
+  getIsLiked,
+  DISLIKE_SENTIMENT,
+  LIKE_SENTIMENT,
+  NEUTRAL_SENTIMENT,
+} from '../constants/likes';
 
 function ResponseBar({
   id,
-  doToggleLikeIdea,
-  doToggleDislikeIdea,
-  liked,
-  disliked,
+  sentiment,
+  doSetIdeaSentiment,
   incrementIndex,
   conditionalAddToLimbo,
-  fullListIdeaIndex,
 }) {
-  useEffect(() => {
-    conditionalAddToLimbo(fullListIdeaIndex);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [liked, disliked, fullListIdeaIndex]);
+  const disliked = getIsDisliked(sentiment);
+  const liked = getIsLiked(sentiment);
+  console.log(sentiment, disliked, liked);
+
+  // useEffect(() => {
+  //   conditionalAddToLimbo(fullListIdeaIndex);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [sentiment, fullListIdeaIndex]);
 
   function toggleDislike() {
-    doToggleDislikeIdea({ id });
+    doSetIdeaSentiment({
+      id,
+      sentiment: disliked ? NEUTRAL_SENTIMENT : DISLIKE_SENTIMENT,
+    });
   }
   function toggleLike() {
-    doToggleLikeIdea({ id });
+    doSetIdeaSentiment({
+      id,
+      sentiment: liked ? NEUTRAL_SENTIMENT : LIKE_SENTIMENT,
+    });
   }
   return (
     <View style={styles.container}>
@@ -100,19 +114,12 @@ const styles = StyleSheet.create({
 
 export default connect(
   ({ ideas }, { id }) => {
-    const ideaIndex = findIndexOfObjWithId(ideas, id);
-    let idea = {};
-    if (ideaIndex !== -1) {
-      idea = ideas[ideaIndex];
-    }
     return {
-      fullListIdeaIndex: ideaIndex,
-      liked: idea.liked,
-      disliked: idea.disliked,
+      sentiment:
+        id !== undefined ? ideas.ideaSentimentMap[id] : NEUTRAL_SENTIMENT,
     };
   },
   {
-    doToggleLikeIdea: toggleLikeIdea,
-    doToggleDislikeIdea: toggleDislikeIdea,
+    doSetIdeaSentiment: setIdeaSentiment,
   },
 )(ResponseBar);
