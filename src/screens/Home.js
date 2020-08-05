@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import Page from '../components/Page';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Colors, { hslaToTransparent } from '../../theme/colors';
+import { DISLIKE_SENTIMENT, LIKE_SENTIMENT } from '../constants/likes';
 
 function HomeScreen({ navigation, ideas }) {
   function goToAllActivityCards() {
@@ -14,19 +15,19 @@ function HomeScreen({ navigation, ideas }) {
   }
   function goToLiked() {
     navigation.push('Activity Cards', {
-      filterRequirement: { isCustom: false, liked: true },
+      options: { isCustom: false, sentiment: LIKE_SENTIMENT },
       title: 'Liked Ideas',
     });
   }
   function goToDisliked() {
     navigation.push('Activity Cards', {
-      filterRequirement: { isCustom: false, disliked: true },
+      options: { isCustom: false, sentiment: DISLIKE_SENTIMENT },
       title: 'Disliked Ideas',
     });
   }
   function goToMyIdeas() {
     navigation.push('Activity Cards', {
-      filterRequirement: { isCustom: true },
+      options: { isCustom: true },
       title: 'My Ideas',
     });
   }

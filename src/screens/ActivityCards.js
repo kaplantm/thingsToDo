@@ -1,13 +1,33 @@
-import React, { useState, useMemo, useLayoutEffect, useEffect } from 'react';
+import React, { useState, useLayoutEffect, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import Page from '../components/Page';
 import ResponseBar from '../components/Response-Bar';
 import IdeaCarousel from '../components/IdeaCarousel';
 import Colors from '../../theme/colors';
-import { setPublicIdeas } from '../redux/slices/ideas';
 import getLocalIdeas from '../lib/getIdeasLocal';
+import graphQLClient from '../api/graphql/client';
+import { getQueryTodosInCategory } from '../api/graphql/queries';
+
+function getInitialState({
+  sentiment,
+  isCustom,
+  sentimentalIdeas,
+  customIdeas,
+}) {
+  if (isCustom) {
+    console.log('getinitial', 1);
+    return customIdeas;
+  }
+  if (sentiment) {
+    const filter = Object.values(sentimentalIdeas).filter(
+      (ideaWithSentiment) => ideaWithSentiment.sentiment === sentiment,
+    );
+    return filter;
+  }
+  return [];
+}
 
 const ErrorComponent = () => (
   <Page>
@@ -21,11 +41,11 @@ const ErrorComponent = () => (
 function ActivityCardsScreen({
   navigation,
   route,
-  publicIdeas,
-  doSetPublicIdeas,
+  customIdeas,
+  sentimentalIdeas,
 }) {
   const {
-    filterRequirement = { isCustom: false, disliked: true },
+    options = { isCustom: false, sentiment: 0, category: 'indoor' }, // TODO: rename to options and make category dyanmic
     title = 'Explore Ideas',
   } = route.params || {};
 
@@ -34,72 +54,79 @@ function ActivityCardsScreen({
       title: title,
     });
   }, [navigation, title]);
-  const { isCustom } = filterRequirement;
+  const { isCustom, category, sentiment } = options;
 
   const [index, setIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(
+    !isCustom && !sentiment ? true : false,
+  );
+  console.log(' !isCustom && !sentiment', !isCustom && !sentiment, loading);
+  const [ideas, setIdeas] = useState(() =>
+    getInitialState({ sentiment, isCustom, sentimentalIdeas, customIdeas }),
+  );
   const [limboIdeas, setLimboIdeas] = useState([]);
 
   useEffect(() => {
-    // TODO: future, do api request
-    // const ideas = isCustom ?
-    // TODO: handle filter in reducer? doFilterViewableFromLocalIdeas doFilterViewableFromCustomIdeas
-    // TODO: put in thunks
-    const localIdeas = getLocalIdeas({ isCustom });
-    // console.log({ localIdeas });
-    doSetPublicIdeas({ publicIdeas: localIdeas });
-    setLoading(false);
-    // console.log('use effect', filterRequirement);
-  }, [isCustom, doSetPublicIdeas]);
+    async function getIdeas() {
+      try {
+        const data = await graphQLClient.request(
+          getQueryTodosInCategory(category),
+        );
+        if (data?.category?.todos) {
+          setIdeas(data?.category?.todos);
+        }
+      } catch (e) {
+        console.log({ e });
+      }
+      setLoading(false);
+    }
+    if (!isCustom && !sentiment) {
+      getIdeas();
+    }
+  }, [isCustom, category, sentiment]);
 
   function incrementIndex() {
     setIndex(index + 1);
   }
-  // const filteredIdeasList = useMemo(
-  //   () => filterIdeas(ideas, filterFunction),
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   [filterFunction],
-  // );
 
-  const idea = publicIdeas[index];
+  const idea = ideas[index];
 
-  function conditionalAddToLimbo(fullListIdeaIndex) {
-    // const changedIdea = ideas[fullListIdeaIndex];
-    // const indexInLimbo = limboIdeas.indexOf(changedIdea.id);
-    // const passesFilter = filterFunction(changedIdea);
-    // if (!passesFilter) {
-    //   if (indexInLimbo === -1) {
-    //     console.log('conditionalAddToLimbo', 1);
-    //     setLimboIdeas([...limboIdeas, changedIdea.id]);
-    //   }
-    // } else {
-    //   if (indexInLimbo !== -1) {
-    //     const limboIdeasCopy = [...limboIdeas];
-    //     limboIdeasCopy.splice(indexInLimbo, 1);
-    //     setLimboIdeas(limboIdeasCopy);
-    //   }
-    // }
+  function conditionalAddToLimboForSentimentChange(newSentiment, id) {
+    const indexInLimbo = limboIdeas.indexOf(id);
+    const shouldBeInLimbo = sentiment && newSentiment !== sentiment;
+    if (shouldBeInLimbo) {
+      if (indexInLimbo === -1) {
+        setLimboIdeas([...limboIdeas, id]);
+      }
+    } else if (indexInLimbo !== -1) {
+      const limboIdeasCopy = [...limboIdeas];
+      limboIdeasCopy.splice(indexInLimbo, 1);
+      setLimboIdeas(limboIdeasCopy);
+    }
   }
 
-  if (index === -1 || !publicIdeas || !publicIdeas.length) {
+  // TODO: don't show thumbs for custom ideas (edit / delete)
+  if ((index === -1 || !ideas || !ideas.length) && !loading) {
     return <ErrorComponent />;
   }
   return (
     <Page padded={false}>
       {loading ? (
-        <Text>Loading...</Text> // TODO: format
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color={Colors.lightestGreyscale} />
+        </View>
       ) : (
         <>
           <IdeaCarousel
-            limboIdeas={limboIdeas}
-            ideas={publicIdeas}
+            limboIdeas={limboIdeas} // TODO: ?
+            ideas={ideas}
             setIndex={setIndex}
             index={index}
           />
           <ResponseBar
-            id={idea.id}
+            idea={idea}
             incrementIndex={incrementIndex}
-            conditionalAddToLimbo={conditionalAddToLimbo}
+            onSentimentChange={conditionalAddToLimboForSentimentChange}
           />
         </>
       )}
@@ -117,11 +144,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: Colors.lightestGreyscale,
   },
+  loadingContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: Colors.lightestGreyscale,
+  },
 });
 
 export default connect(
   ({ ideas }) => ({
-    publicIdeas: ideas.publicIdeas,
+    sentimentalIdeas: ideas.sentimentalIdeas,
+    customIdeas: ideas.customIdeas,
   }),
-  { doSetPublicIdeas: setPublicIdeas },
+  // { doSetPublicIdeas: setPublicIdeas }, // remove reducer value?
 )(ActivityCardsScreen);

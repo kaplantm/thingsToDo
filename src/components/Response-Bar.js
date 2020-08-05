@@ -15,33 +15,33 @@ import {
 } from '../constants/likes';
 
 function ResponseBar({
-  id,
+  idea,
   sentiment,
   doSetIdeaSentiment,
   incrementIndex,
-  conditionalAddToLimbo,
+  onSentimentChange,
 }) {
   const disliked = getIsDisliked(sentiment);
   const liked = getIsLiked(sentiment);
-  console.log(sentiment, disliked, liked);
-
-  // useEffect(() => {
-  //   conditionalAddToLimbo(fullListIdeaIndex);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [sentiment, fullListIdeaIndex]);
 
   function toggleDislike() {
+    const newSentiment = disliked ? NEUTRAL_SENTIMENT : DISLIKE_SENTIMENT;
     doSetIdeaSentiment({
-      id,
-      sentiment: disliked ? NEUTRAL_SENTIMENT : DISLIKE_SENTIMENT,
+      idea,
+      sentiment: newSentiment,
     });
+    onSentimentChange(newSentiment, idea.id);
   }
+
   function toggleLike() {
+    const newSentiment = liked ? NEUTRAL_SENTIMENT : LIKE_SENTIMENT;
     doSetIdeaSentiment({
-      id,
-      sentiment: liked ? NEUTRAL_SENTIMENT : LIKE_SENTIMENT,
+      idea,
+      sentiment: newSentiment,
     });
+    onSentimentChange(newSentiment, idea.id);
   }
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -113,10 +113,13 @@ const styles = StyleSheet.create({
 });
 
 export default connect(
-  ({ ideas }, { id }) => {
+  ({ ideas }, { idea }) => {
+    const id = idea?.id;
     return {
       sentiment:
-        id !== undefined ? ideas.ideaSentimentMap[id] : NEUTRAL_SENTIMENT,
+        idea?.id !== undefined
+          ? ideas.sentimentalIdeas[id]?.sentiment
+          : NEUTRAL_SENTIMENT,
     };
   },
   {

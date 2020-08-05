@@ -16,6 +16,8 @@ local storage
 nunito
 shuffle card order
 disable next on last idea card
+separate likes/dislikes in reducers and holds full goals as objs
+- dislike/likes page loads up from likes/dislikes reducer, explore loads from public
 
 Roadmap:
 v1 - likes, dislikes, local storage saving, new idea submission

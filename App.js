@@ -10,7 +10,6 @@ import HomeScreen from './src/screens/Home';
 import MyIdeas from './src/screens/MyIdeas';
 import Settings from './src/screens/Settings';
 import Colors from './theme/colors';
-import HomeHeaderRight from './src/components/HomeHeaderRight';
 import NewIdeaScreen from './src/screens/NewIdea';
 import ActivityCards from './src/screens/ActivityCards';
 
@@ -40,11 +39,10 @@ const App: () => React$Node = () => {
             name="Not Bored Now"
             component={HomeScreen}
             options={(navigation) => ({
-              // headerRight: () => <HomeHeaderRight {...navigation} />,
               headerTitle: 'Things To Do',
             })}
           />
-          <Stack.Screen
+          <Stack.Screen // TODO: remove?
             name="My Ideas"
             component={MyIdeas}
             options={{ title: 'My Ideas' }}

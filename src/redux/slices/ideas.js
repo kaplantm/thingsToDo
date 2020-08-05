@@ -1,20 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import defaultIdeas from '../../constants/defaultIdeas';
 import { findIndexOfObjWithId } from '../../lib/utils';
+import { NEUTRAL_SENTIMENT } from '../../constants/likes';
 
 const ideasSlice = createSlice({
   name: 'ideas',
   initialState: {
-    publicIdeas: defaultIdeas,
-    customIdeas: [],
-    ideaSentimentMap: {},
+    customIdeas: [], // array full ideas for custom ideas. stored on device for offline viewing
+    sentimentalIdeas: {},
   },
   reducers: {
-    setPublicIdeas(state, action) {
-      const { publicIdeas } = action.payload;
-      state.publicIdeas = publicIdeas;
-      return state;
-    },
     addIdea(state, action) {
       const { text } = action.payload;
       state.customIdeas.push({
@@ -37,19 +31,19 @@ const ideasSlice = createSlice({
       return state;
     },
     setIdeaSentiment(state, action) {
-      const { id, sentiment } = action.payload;
-      state.ideaSentimentMap[id] = sentiment;
-      console.log(' state.ideaSentimentMa', state.ideaSentimentMap);
+      const { idea, sentiment } = action.payload;
+      state.sentimentalIdeas[idea.id] = { ...idea, sentiment };
+
+      console.log(
+        ' state.ideaSentimentMa?',
+        state.sentimentalIdeas,
+        // state.sentimentalIdeas,
+      );
       return state;
     },
   },
 });
 
-export const {
-  addIdea,
-  deleteIdea,
-  setIdeaSentiment,
-  setPublicIdeas,
-} = ideasSlice.actions;
+export const { addIdea, deleteIdea, setIdeaSentiment } = ideasSlice.actions;
 
 export default ideasSlice.reducer;
