@@ -8,7 +8,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { store, persistor } from './src/redux/store';
 import HomeScreen from './src/screens/Home';
-import MyIdeas from './src/screens/MyIdeas';
 import Settings from './src/screens/Settings';
 import Colors from './theme/colors';
 import NewIdeaScreen from './src/screens/NewIdea';
@@ -43,11 +42,6 @@ const App: () => React$Node = () => {
               options={(navigation) => ({
                 headerTitle: 'Things To Do',
               })}
-            />
-            <Stack.Screen // TODO: remove?
-              name="My Ideas"
-              component={MyIdeas}
-              options={{ title: 'My Ideas' }}
             />
             <Stack.Screen
               name="Activity Cards"

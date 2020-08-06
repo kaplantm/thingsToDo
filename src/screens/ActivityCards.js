@@ -136,7 +136,6 @@ function ActivityCardsScreen({
     }
   }
 
-  // TODO: don't show thumbs for custom ideas (edit / delete)
   if ((index === -1 || !ideas || !ideas.length) && !loading) {
     return <ErrorComponent />;
   }
@@ -152,7 +151,7 @@ function ActivityCardsScreen({
       ) : (
         <>
           <IdeaCarousel
-            limboIdeas={limboIdeas} // TODO: ?
+            limboIdeas={limboIdeas}
             ideas={ideas}
             setIndex={setIndex}
             index={index - 0.1} // needed to prevent page from loading offcenter when initial index is not 0

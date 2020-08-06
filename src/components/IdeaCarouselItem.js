@@ -12,17 +12,7 @@ export class CarouselItem extends PureComponent {
   };
 
   render = () => {
-    const {
-      animatedValue,
-      itemIndex,
-      text,
-      icon,
-      isInLimbo,
-      // categories,
-      // liked,
-      // disliked,
-      // isCustom,
-    } = this.props;
+    const { animatedValue, itemIndex, text, icon, isInLimbo } = this.props;
     const minOpacity = isInLimbo ? 0.25 : 0.5;
     const maxOpacity = isInLimbo ? 0.5 : 1;
 

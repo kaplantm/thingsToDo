@@ -60,8 +60,6 @@ function ResponseBar({
   }
 
   function handleRestoreIdea() {
-    console.log('handleRestoreIdea');
-    // TODO: reinsert at index?
     doUpsertIdea({ id: idea.id, text: idea.text });
     onRestoreIdea(idea.id);
   }

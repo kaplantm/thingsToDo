@@ -13,18 +13,8 @@ const rootReducer = combineReducers({ ideas: ideasReducer });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// TODO: save and restore from local storage
-
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: [thunk],
 });
 export const persistor = persistStore(store);
-
-// export default () => {
-//   const store = configureStore({
-//     reducer: persistedReducer,
-//   });
-//   const persistor = persistStore(store);
-//   return { store, persistor };
-// };

@@ -5,8 +5,6 @@ fix vars for linear gradient
 add new idea locally functional
 add new idea remote submission
 
-shuffle card order
-
 Roadmap:
 v1 - likes, dislikes, local storage saving, new idea submission
 v2 - categories
