@@ -11,3 +11,5 @@ const CATEGORIES = {
 export default CATEGORIES;
 
 export const CATEGORIES_ARRAY = Object.keys(CATEGORIES);
+
+// TODO: are these needed?

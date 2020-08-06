@@ -59,7 +59,7 @@ function ActivityCardsScreen({
     });
   }, [navigation, title]);
   const { isCustom, category, sentiment, startIndex } = options;
-
+  console.log({ startIndex });
   const [index, setIndex] = useState(startIndex || 0);
   const [loading, setLoading] = useState(
     !isCustom && !sentiment ? true : false,
@@ -72,11 +72,13 @@ function ActivityCardsScreen({
 
   useEffect(() => {
     async function getIdeas() {
+      console.log('get ideas ***');
       try {
         const data = await graphQLClient.request(
           getQueryTodosInCategory(category),
         );
         if (data?.category?.todos) {
+          console.log({ data: data?.category?.todos });
           setIdeas(data?.category?.todos);
         }
       } catch (e) {
@@ -112,11 +114,29 @@ function ActivityCardsScreen({
     }
   }
 
+  function conditionalAddToLimboForDeleteIdea(id) {
+    const indexInLimbo = limboIdeas.indexOf(id);
+    if (indexInLimbo === -1) {
+      setLimboIdeas([...limboIdeas, id]);
+    }
+  }
+
+  function conditionalRemoveFromLimboForRestoreIdea(id) {
+    console.log('conditionalRemoveFromLimboForRestoreIdea');
+    const indexInLimbo = limboIdeas.indexOf(id);
+    if (indexInLimbo !== -1) {
+      let limboIdeasCopy = [...limboIdeas];
+      limboIdeasCopy.splice(indexInLimbo, 1);
+      console.log({ limboIdeasCopy, limboIdeas });
+      setLimboIdeas(limboIdeasCopy);
+    }
+  }
+
   // TODO: don't show thumbs for custom ideas (edit / delete)
   if ((index === -1 || !ideas || !ideas.length) && !loading) {
     return <ErrorComponent />;
   }
-  if (index > ideas.length - 1) {
+  if (!loading && ideas.length && index > ideas.length - 1) {
     setIndex(ideas.length - 1);
   }
   return (
@@ -135,8 +155,11 @@ function ActivityCardsScreen({
           />
           <ResponseBar
             idea={idea}
+            isInLimbo={limboIdeas.includes(idea.id)}
             incrementIndex={incrementIndex}
             atEndOfIdeas={index === ideas.length - 1}
+            onDeleteIdea={conditionalAddToLimboForDeleteIdea}
+            onRestoreIdea={conditionalRemoveFromLimboForRestoreIdea}
             onSentimentChange={conditionalAddToLimboForSentimentChange}
           />
         </>

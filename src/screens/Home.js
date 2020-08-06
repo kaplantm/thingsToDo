@@ -2,14 +2,14 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { View, Text, StyleSheet } from 'react-native';
 import Page from '../components/Page';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import Colors, { hslaToTransparent } from '../../theme/colors';
 import { DISLIKE_SENTIMENT, LIKE_SENTIMENT } from '../constants/likes';
+import Explore from '../components/Explore';
+
+// TODO: tinypng
 
 function HomeScreen({ navigation, ideas }) {
-  function goToAllActivityCards() {
-    navigation.push('Activity Cards'); // TODO: strings const
-  }
   function goToNewIdea() {
     navigation.push('New Idea');
   }
@@ -31,76 +31,76 @@ function HomeScreen({ navigation, ideas }) {
       title: 'My Ideas',
     });
   }
+
   return (
     <Page>
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={[styles.btnContainer, styles.explore]}
-          onPress={goToAllActivityCards}>
-          <Text style={styles.btnText}>Explore</Text>
-        </TouchableOpacity>
+      <ScrollView>
+        <View style={styles.container}>
+          <View>
+            <TouchableOpacity
+              style={[styles.btnContainer, styles.myIdeas]}
+              onPress={goToMyIdeas}>
+              <Text style={styles.btnText}>My Ideas</Text>
+            </TouchableOpacity>
+            <View style={styles.row}>
+              <View style={[styles.btnContainer, styles.liked]}>
+                <TouchableOpacity onPress={goToLiked} style={styles.row}>
+                  <Icon
+                    name="thumb-up"
+                    size={30}
+                    style={styles.icon}
+                    color={Colors.lightestGreyscale}
+                  />
+                  <Text style={styles.btnTextMedium}>Liked</Text>
+                </TouchableOpacity>
+              </View>
 
-        <Text style={styles.title}>My Activities</Text>
-        <View style={styles.myStuffContainer}>
-          <TouchableOpacity
-            style={[styles.btnContainer, styles.myIdeas]}
-            onPress={goToMyIdeas}>
-            <Text style={styles.btnText}>My Ideas</Text>
-          </TouchableOpacity>
-          <View style={styles.row}>
-            <View style={[styles.btnContainer, styles.liked]}>
-              <TouchableOpacity onPress={goToLiked} style={styles.row}>
-                <Icon
-                  name="thumb-up"
-                  size={30}
-                  style={styles.icon}
-                  color={Colors.lightestGreyscale}
-                />
-                <Text style={styles.btnTextMedium}>Liked</Text>
-              </TouchableOpacity>
+              <View style={[styles.btnContainer, styles.disliked]}>
+                <TouchableOpacity
+                  onPress={goToDisliked}
+                  style={[styles.row, styles.btnContainerSpread]}>
+                  <Icon
+                    name="thumb-down"
+                    size={30}
+                    style={styles.icon}
+                    color={Colors.lightestGreyscale}
+                  />
+                  <Text style={styles.btnTextMedium}>Disliked</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-
-            <View style={[styles.btnContainer, styles.disliked]}>
+            <View style={styles.centerContainer}>
               <TouchableOpacity
-                onPress={goToDisliked}
-                style={[styles.row, styles.btnContainerSpread]}>
+                style={[styles.btnContainer, styles.add]}
+                onPress={goToNewIdea}>
                 <Icon
-                  name="thumb-down"
+                  name="add"
                   size={30}
                   style={styles.icon}
                   color={Colors.lightestGreyscale}
                 />
-                <Text style={styles.btnTextMedium}>Disliked</Text>
+                <Text style={styles.btnTextSmall}>Add a new idea</Text>
               </TouchableOpacity>
             </View>
           </View>
-          <View style={styles.centerContainer}>
-            <TouchableOpacity
-              style={[styles.btnContainer, styles.add]}
-              onPress={goToNewIdea}>
-              <Icon
-                name="add"
-                size={30}
-                style={styles.icon}
-                color={Colors.lightestGreyscale}
-              />
-              <Text style={styles.btnTextSmall}>Add a new idea</Text>
-            </TouchableOpacity>
+          <Text style={styles.title}>Explore</Text>
+          <View style={styles.dividedContainer}>
+            <Explore navigation={navigation} />
           </View>
         </View>
-      </View>
+      </ScrollView>
     </Page>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
+    marginTop: 20,
   },
   centerContainer: {
     alignItems: 'center',
   },
-  myStuffContainer: {
+  dividedContainer: {
     paddingTop: 10,
     borderTopColor: hslaToTransparent(Colors.lightestGreyscale, 0.5),
     borderTopWidth: 2,
@@ -108,9 +108,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  explore: {
-    backgroundColor: hslaToTransparent(Colors.orange, 0.75),
+    justifyContent: 'space-evenly',
   },
   liked: {
     backgroundColor: hslaToTransparent(Colors.blue, 0.65),

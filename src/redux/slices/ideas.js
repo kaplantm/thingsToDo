@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { findIndexOfObjWithId } from '../../lib/utils';
-import { NEUTRAL_SENTIMENT } from '../../constants/likes';
 
 const ideasSlice = createSlice({
   name: 'ideas',
@@ -10,23 +9,29 @@ const ideasSlice = createSlice({
   },
   reducers: {
     addIdea(state, action) {
-      const { text } = action.payload;
-      state.customIdeas.push({
-        id: new Date().getTime(),
-        isCustom: true,
-        disliked: false,
-        liked: true,
-        text,
-        icon: '⭐️',
-        categories: [],
-      });
+      const { text, id } = action.payload;
+      const newId = id || new Date().getTime();
+
+      const index = findIndexOfObjWithId(state.customIdeas, newId);
+      if (index === -1) {
+        state.customIdeas.push({
+          id: newId,
+          isCustom: true,
+          disliked: false,
+          liked: true,
+          text,
+          icon: '⭐️',
+          categories: [],
+        });
+      }
       return state;
     },
     deleteIdea(state, action) {
       const { id } = action.payload;
-      const index = findIndexOfObjWithId(state, id);
-      if (index.isCustom) {
-        state.customIdeas.splice(index);
+      const index = findIndexOfObjWithId(state.customIdeas, id);
+      console.log('deleteIdea', { id, index });
+      if (index !== -1) {
+        state.customIdeas.splice(index, 1);
       }
       return state;
     },
