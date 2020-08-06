@@ -3,7 +3,11 @@ import { View, StyleSheet, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../theme/colors';
-import { setIdeaSentiment, deleteIdea, addIdea } from '../redux/slices/ideas';
+import {
+  setIdeaSentiment,
+  deleteIdea,
+  upsertIdea,
+} from '../redux/slices/ideas';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {
   getIsDisliked,
@@ -15,6 +19,7 @@ import {
 
 function ResponseBar({
   idea,
+  index,
   sentiment,
   doSetIdeaSentiment,
   incrementIndex,
@@ -24,7 +29,8 @@ function ResponseBar({
   isInLimbo,
   atEndOfIdeas,
   doDeleteIdea,
-  doAddIdea,
+  doUpsertIdea,
+  navigation,
 }) {
   const disliked = getIsDisliked(sentiment);
   const liked = getIsLiked(sentiment);
@@ -55,8 +61,17 @@ function ResponseBar({
 
   function handleRestoreIdea() {
     console.log('handleRestoreIdea');
-    doAddIdea({ id: idea.id, text: idea.text });
+    // TODO: reinsert at index?
+    doUpsertIdea({ id: idea.id, text: idea.text });
     onRestoreIdea(idea.id);
+  }
+
+  function goToEditIdea() {
+    navigation.push('New Idea', {
+      idea,
+      title: 'Edit Idea',
+      ideaIndex: index,
+    });
   }
 
   return (
@@ -109,7 +124,7 @@ function ResponseBar({
 
       {idea.isCustom ? (
         <TouchableOpacity
-          onPress={null}
+          onPress={goToEditIdea}
           disabled={isInLimbo}
           style={[
             styles.iconCircle,
@@ -184,6 +199,6 @@ export default connect(
   {
     doSetIdeaSentiment: setIdeaSentiment,
     doDeleteIdea: deleteIdea,
-    doAddIdea: addIdea,
+    doUpsertIdea: upsertIdea,
   },
 )(ResponseBar);

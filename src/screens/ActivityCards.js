@@ -9,6 +9,10 @@ import Colors from '../../theme/colors';
 import getLocalIdeas from '../lib/getIdeasLocal';
 import graphQLClient from '../api/graphql/client';
 import { getQueryTodosInCategory } from '../api/graphql/queries';
+import { shuffleArray, findIndexOfObjWithId } from '../lib/utils';
+import { NEUTRAL_SENTIMENT } from '../constants/likes';
+
+// TODO: local ideas
 
 function getInitialState({
   sentiment,
@@ -17,13 +21,13 @@ function getInitialState({
   customIdeas,
 }) {
   if (isCustom) {
-    return customIdeas;
+    return shuffleArray(customIdeas);
   }
   if (sentiment) {
-    const filter = Object.values(sentimentalIdeas).filter(
+    const filteredIdeasForSentiment = Object.values(sentimentalIdeas).filter(
       (ideaWithSentiment) => ideaWithSentiment.sentiment === sentiment,
     );
-    return filter;
+    return shuffleArray(filteredIdeasForSentiment);
   }
   return [];
 }
@@ -43,24 +47,19 @@ function ActivityCardsScreen({
   customIdeas,
   sentimentalIdeas,
 }) {
-  const {
-    options = {
-      isCustom: false,
-      sentiment: 0,
-      category: 'indoor',
-      startIndex: 0,
-    }, // TODO: rename to options and make category dyanmic
-    title = 'Explore Ideas',
-  } = route.params || {};
+  const { options = {}, title = 'Explore Ideas' } = route.params || {};
 
   useLayoutEffect(() => {
     navigation.setOptions({
       title: title,
     });
   }, [navigation, title]);
-  const { isCustom, category, sentiment, startIndex } = options;
-  console.log({ startIndex });
-  const [index, setIndex] = useState(startIndex || 0);
+  const {
+    isCustom = false,
+    category = null,
+    sentiment = NEUTRAL_SENTIMENT,
+    startId = null,
+  } = options;
   const [loading, setLoading] = useState(
     !isCustom && !sentiment ? true : false,
   );
@@ -68,6 +67,11 @@ function ActivityCardsScreen({
   const [ideas, setIdeas] = useState(() =>
     getInitialState({ sentiment, isCustom, sentimentalIdeas, customIdeas }),
   );
+
+  console.log({ startId });
+  const startingIndex =
+    isCustom && startId ? findIndexOfObjWithId(ideas, startId) : 0;
+  const [index, setIndex] = useState(startingIndex);
   const [limboIdeas, setLimboIdeas] = useState([]);
 
   useEffect(() => {
@@ -79,7 +83,7 @@ function ActivityCardsScreen({
         );
         if (data?.category?.todos) {
           console.log({ data: data?.category?.todos });
-          setIdeas(data?.category?.todos);
+          setIdeas(shuffleArray(data?.category?.todos));
         }
       } catch (e) {
         console.log({ e });
@@ -98,7 +102,7 @@ function ActivityCardsScreen({
     }
   }
 
-  const idea = ideas[index];
+  let idea = ideas[index];
 
   function conditionalAddToLimboForSentimentChange(newSentiment, id) {
     const indexInLimbo = limboIdeas.indexOf(id);
@@ -151,16 +155,18 @@ function ActivityCardsScreen({
             limboIdeas={limboIdeas} // TODO: ?
             ideas={ideas}
             setIndex={setIndex}
-            index={index}
+            index={index - 0.1} // needed to prevent page from loading offcenter when initial index is not 0
           />
           <ResponseBar
             idea={idea}
             isInLimbo={limboIdeas.includes(idea.id)}
             incrementIndex={incrementIndex}
             atEndOfIdeas={index === ideas.length - 1}
+            index={index}
             onDeleteIdea={conditionalAddToLimboForDeleteIdea}
             onRestoreIdea={conditionalRemoveFromLimboForRestoreIdea}
             onSentimentChange={conditionalAddToLimboForSentimentChange}
+            navigation={navigation}
           />
         </>
       )}

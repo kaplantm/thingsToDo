@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import { CommonActions } from '@react-navigation/native';
 import { View, Text, Switch, StyleSheet, TextInput } from 'react-native';
 import Page from '../components/Page';
 import Colors, { hslaToTransparent } from '../../theme/colors';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { addIdea } from '../redux/slices/ideas';
+import { upsertIdea } from '../redux/slices/ideas';
 
-const initialState = {
-  text: '',
-  isEnabled: false,
-  isSaved: false,
-};
-function NewIdeaScreen({ navigation, doAddIdea, customIdeasLength }) {
-  const [state, setState] = useState(initialState);
-  // const [isEnabled, setIsEnabled] = useState(false);
-  // const [isSaved, setIsSaved] = useState(false);
+function NewIdeaScreen({ route, navigation, doUpsertIdea, customIdeasLength }) {
+  const { idea = {}, ideaIndex = customIdeasLength, title = 'New Idea' } =
+    route.params || {};
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: title,
+    });
+  }, [navigation, title]);
+
+  const [state, setState] = useState({
+    text: idea.text,
+    isEnabled: false,
+    isSaved: false,
+  });
   const toggleSwitch = () =>
     setState((previousState) => ({
       ...previousState,
@@ -26,15 +32,16 @@ function NewIdeaScreen({ navigation, doAddIdea, customIdeasLength }) {
     if (state.isEnabled) {
       console.log('TODO: send to server');
     }
-    doAddIdea({ text: state.text });
+
+    const upsertIdeaId = idea.id || new Date().getTime();
+    doUpsertIdea({ text: state.text, id: upsertIdeaId });
+
     setState((previousState) => ({
       ...previousState,
       isSaved: true,
     }));
 
     setTimeout(() => {
-      setState(initialState);
-
       navigation.dispatch(
         CommonActions.reset({
           index: 1,
@@ -43,14 +50,14 @@ function NewIdeaScreen({ navigation, doAddIdea, customIdeasLength }) {
             {
               name: 'Activity Cards',
               params: {
-                options: { isCustom: true, startIndex: customIdeasLength },
+                options: { isCustom: true, startId: upsertIdeaId },
                 title: 'My Ideas',
               },
             },
           ],
         }),
       );
-    }, 1000);
+    }, 500);
   }
   function onChangeText(text) {
     setState((previousState) => ({
@@ -62,8 +69,7 @@ function NewIdeaScreen({ navigation, doAddIdea, customIdeasLength }) {
     <Page withDismissKeyboard>
       <View style={styles.container}>
         <Text style={styles.info}>
-          New ideas will appear in under "My Ideas" and will be added to your
-          "Liked" list.
+          Custom ideas will appear in under "My Ideas".
         </Text>
 
         <TextInput
@@ -75,19 +81,21 @@ function NewIdeaScreen({ navigation, doAddIdea, customIdeasLength }) {
           placeholder="Type your idea here..."
         />
 
-        <View style={styles.switchContainer}>
-          <Switch
-            trackColor={{
-              false: Colors.darkPrimary,
-              true: Colors.medPrimary,
-            }}
-            onValueChange={toggleSwitch}
-            value={state.isEnabled}
-          />
-          <Text style={[styles.info, styles.marginLeft]}>
-            Submit to app (public for everyone to see).
-          </Text>
-        </View>
+        {!idea.id && (
+          <View style={styles.switchContainer}>
+            <Switch
+              trackColor={{
+                false: Colors.darkPrimary,
+                true: Colors.medPrimary,
+              }}
+              onValueChange={toggleSwitch}
+              value={state.isEnabled}
+            />
+            <Text style={[styles.info, styles.marginLeft]}>
+              Submit to app (public for everyone to see).
+            </Text>
+          </View>
+        )}
 
         <TouchableOpacity
           onPress={state.isSaved ? null : onClickSave}
@@ -95,7 +103,11 @@ function NewIdeaScreen({ navigation, doAddIdea, customIdeasLength }) {
             styles.saveBtn,
             (!state.text || state.isSaved) && styles.disabled,
           ]}>
-          <Text style={styles.saveBtnText}>
+          <Text
+            style={[
+              styles.saveBtnText,
+              (!state.text || state.isSaved) && styles.disabledText,
+            ]}>
             {state.isSaved ? 'Saved!' : 'Save'}
           </Text>
         </TouchableOpacity>
@@ -187,6 +199,9 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: Colors.lightestGreyscale,
   },
+  disabledText: {
+    opacity: 0.4,
+  },
 });
 
 export default connect(
@@ -194,6 +209,6 @@ export default connect(
     customIdeasLength: ideas.customIdeas.length,
   }),
   {
-    doAddIdea: addIdea,
+    doUpsertIdea: upsertIdea,
   },
 )(NewIdeaScreen);

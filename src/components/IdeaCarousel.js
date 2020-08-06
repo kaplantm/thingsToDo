@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { View, Text } from 'react-native';
-import Page from '../components/Page';
-import ResponseBar from '../components/Response-Bar';
+import React from 'react';
 import { Dimensions } from 'react-native';
 import SideSwipe from 'react-native-sideswipe';
 import { CarouselItem } from './IdeaCarouselItem';

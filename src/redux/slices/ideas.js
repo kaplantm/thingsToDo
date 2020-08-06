@@ -8,7 +8,7 @@ const ideasSlice = createSlice({
     sentimentalIdeas: {},
   },
   reducers: {
-    addIdea(state, action) {
+    upsertIdea(state, action) {
       const { text, id } = action.payload;
       const newId = id || new Date().getTime();
 
@@ -23,6 +23,8 @@ const ideasSlice = createSlice({
           icon: '⭐️',
           categories: [],
         });
+      } else {
+        state.customIdeas[index].text = text;
       }
       return state;
     },
@@ -49,6 +51,6 @@ const ideasSlice = createSlice({
   },
 });
 
-export const { addIdea, deleteIdea, setIdeaSentiment } = ideasSlice.actions;
+export const { upsertIdea, deleteIdea, setIdeaSentiment } = ideasSlice.actions;
 
 export default ideasSlice.reducer;
