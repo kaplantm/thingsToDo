@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { CommonActions } from '@react-navigation/native';
 import { View, Text, Switch, StyleSheet, TextInput } from 'react-native';
 import Page from '../components/Page';
 import Colors, { hslaToTransparent } from '../../theme/colors';
@@ -11,7 +12,7 @@ const initialState = {
   isEnabled: false,
   isSaved: false,
 };
-function NewIdeaScreen({ navigation, doAddIdea }) {
+function NewIdeaScreen({ navigation, doAddIdea, customIdeasLength }) {
   const [state, setState] = useState(initialState);
   // const [isEnabled, setIsEnabled] = useState(false);
   // const [isSaved, setIsSaved] = useState(false);
@@ -31,7 +32,25 @@ function NewIdeaScreen({ navigation, doAddIdea }) {
       isSaved: true,
     }));
 
-    setTimeout(() => setState(initialState), 1000);
+    setTimeout(() => {
+      setState(initialState);
+
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 1,
+          routes: [
+            { name: 'Home' },
+            {
+              name: 'Activity Cards',
+              params: {
+                options: { isCustom: true, startIndex: customIdeasLength },
+                title: 'My Ideas',
+              },
+            },
+          ],
+        }),
+      );
+    }, 1000);
   }
   function onChangeText(text) {
     setState((previousState) => ({
@@ -170,6 +189,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(null, {
-  doAddIdea: addIdea,
-})(NewIdeaScreen);
+export default connect(
+  ({ ideas }) => ({
+    customIdeasLength: ideas.customIdeas.length,
+  }),
+  {
+    doAddIdea: addIdea,
+  },
+)(NewIdeaScreen);

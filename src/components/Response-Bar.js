@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../theme/colors';
 import { setIdeaSentiment } from '../redux/slices/ideas';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { findIndexOfObjWithId } from '../lib/utils';
 import {
   getIsDisliked,
   getIsLiked,
@@ -20,6 +19,7 @@ function ResponseBar({
   doSetIdeaSentiment,
   incrementIndex,
   onSentimentChange,
+  atEndOfIdeas,
 }) {
   const disliked = getIsDisliked(sentiment);
   const liked = getIsLiked(sentiment);
@@ -42,6 +42,7 @@ function ResponseBar({
     onSentimentChange(newSentiment, idea.id);
   }
 
+  console.log({ atEndOfIdeas });
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -62,9 +63,12 @@ function ResponseBar({
         />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={incrementIndex} style={styles.next}>
+      <TouchableOpacity
+        disabled={atEndOfIdeas}
+        onPress={incrementIndex}
+        style={styles.next}>
         <Icon
-          style={styles.icon}
+          style={[styles.icon, atEndOfIdeas && styles.iconDisabled]}
           name="arrow-forward"
           size={70}
           color={Colors.lightPrimary}
@@ -104,11 +108,13 @@ const styles = StyleSheet.create({
   next: {
     paddingTop: 13,
     paddingBottom: 13,
-    opacity: 0.75,
   },
   icon: {
     marginRight: 20,
     marginLeft: 20,
+  },
+  iconDisabled: {
+    opacity: 0.3,
   },
 });
 

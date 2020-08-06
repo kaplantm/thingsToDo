@@ -17,7 +17,6 @@ function getInitialState({
   customIdeas,
 }) {
   if (isCustom) {
-    console.log('getinitial', 1);
     return customIdeas;
   }
   if (sentiment) {
@@ -45,7 +44,12 @@ function ActivityCardsScreen({
   sentimentalIdeas,
 }) {
   const {
-    options = { isCustom: false, sentiment: 0, category: 'indoor' }, // TODO: rename to options and make category dyanmic
+    options = {
+      isCustom: false,
+      sentiment: 0,
+      category: 'indoor',
+      startIndex: 0,
+    }, // TODO: rename to options and make category dyanmic
     title = 'Explore Ideas',
   } = route.params || {};
 
@@ -54,9 +58,9 @@ function ActivityCardsScreen({
       title: title,
     });
   }, [navigation, title]);
-  const { isCustom, category, sentiment } = options;
+  const { isCustom, category, sentiment, startIndex } = options;
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(startIndex || 0);
   const [loading, setLoading] = useState(
     !isCustom && !sentiment ? true : false,
   );
@@ -86,7 +90,10 @@ function ActivityCardsScreen({
   }, [isCustom, category, sentiment]);
 
   function incrementIndex() {
-    setIndex(index + 1);
+    const newIndex = index + 1;
+    if (newIndex < ideas.length) {
+      setIndex(index + 1);
+    }
   }
 
   const idea = ideas[index];
@@ -109,9 +116,12 @@ function ActivityCardsScreen({
   if ((index === -1 || !ideas || !ideas.length) && !loading) {
     return <ErrorComponent />;
   }
+  if (index > ideas.length - 1) {
+    setIndex(ideas.length - 1);
+  }
   return (
     <Page padded={false}>
-      {loading ? (
+      {loading || index > ideas.length - 1 ? (
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={Colors.lightestGreyscale} />
         </View>
@@ -126,6 +136,7 @@ function ActivityCardsScreen({
           <ResponseBar
             idea={idea}
             incrementIndex={incrementIndex}
+            atEndOfIdeas={index === ideas.length - 1}
             onSentimentChange={conditionalAddToLimboForSentimentChange}
           />
         </>
