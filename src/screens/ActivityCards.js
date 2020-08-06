@@ -8,12 +8,15 @@ import IdeaCarousel from '../components/IdeaCarousel';
 import Colors from '../../theme/colors';
 import getLocalIdeas from '../lib/getIdeasLocal';
 import graphQLClient from '../api/graphql/client';
-import { getQueryTodosInCategory } from '../api/graphql/queries';
+import {
+  getQueryTodosInCategory,
+  getQueryTodosAll,
+} from '../api/graphql/queries';
 import { shuffleArray, findIndexOfObjWithId } from '../lib/utils';
 import { NEUTRAL_SENTIMENT } from '../constants/likes';
 
 // TODO: local ideas
-
+// TODO: remove console logs
 function getInitialState({
   sentiment,
   isCustom,
@@ -76,17 +79,18 @@ function ActivityCardsScreen({
 
   useEffect(() => {
     async function getIdeas() {
-      console.log('get ideas ***');
+      console.log('get ideas *******');
       try {
-        const data = await graphQLClient.request(
-          getQueryTodosInCategory(category),
+        const result = await graphQLClient.request(
+          category ? getQueryTodosInCategory(category) : getQueryTodosAll(),
         );
-        if (data?.category?.todos) {
-          console.log({ data: data?.category?.todos });
-          setIdeas(shuffleArray(data?.category?.todos));
+        const todos = category ? result?.category?.todos : result?.todos;
+        if (todos) {
+          console.log('****', { data: todos });
+          setIdeas(shuffleArray(todos));
         }
       } catch (e) {
-        console.log({ e });
+        console.log('*****', { e });
       }
       setLoading(false);
     }

@@ -14,6 +14,18 @@ export function getQueryTodosInCategory(category) {
   `;
 }
 
+export function getQueryTodosAll() {
+  return gql`
+    {
+      todos {
+        text
+        icon
+        id
+      }
+    }
+  `;
+}
+
 export function getQueryTodosByIds(category) {
   return gql`
     {
