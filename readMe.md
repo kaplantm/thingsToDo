@@ -2,8 +2,11 @@ TODO:
 
 // TODO:
 fix vars for linear gradient
-add new idea locally functional
-add new idea remote submission
+add local ideas
+add ideas to api
+clean out test ideas from api
+lambda + ssl
+cors?
 
 Roadmap:
 v1 - likes, dislikes, local storage saving, new idea submission

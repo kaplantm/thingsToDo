@@ -26,6 +26,16 @@ export function getQueryTodosAll() {
   `;
 }
 
+export function getQueryAddSuggestion(text) {
+  return gql`
+    mutation {
+      addSuggestion(text: "${text}") {
+        text
+      }
+    }
+  `;
+}
+
 export function getQueryTodosByIds(category) {
   return gql`
     {

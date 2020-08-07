@@ -6,8 +6,6 @@ import Colors, { hslaToTransparent } from '../../theme/colors';
 import categoryButtons from '../constants/category-buttons';
 import { NEUTRAL_SENTIMENT } from '../constants/likes';
 
-// TODO: tinypng
-
 function Explore({ navigation, ideas }) {
   function goToAllActivityCards() {
     navigation.push('Activity Cards'); // TODO: strings const

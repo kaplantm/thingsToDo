@@ -7,8 +7,6 @@ import Colors, { hslaToTransparent } from '../../theme/colors';
 import { DISLIKE_SENTIMENT, LIKE_SENTIMENT } from '../constants/likes';
 import Explore from '../components/Explore';
 
-// TODO: tinypng
-
 function HomeScreen({ navigation, ideas }) {
   function goToNewIdea() {
     navigation.push('New Idea');

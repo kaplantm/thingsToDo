@@ -6,6 +6,8 @@ import Page from '../components/Page';
 import Colors, { hslaToTransparent } from '../../theme/colors';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { upsertIdea } from '../redux/slices/ideas';
+import graphQLClient from '../api/graphql/client';
+import { getQueryAddSuggestion } from '../api/graphql/queries';
 
 function NewIdeaScreen({ route, navigation, doUpsertIdea, customIdeasLength }) {
   const { idea = {}, ideaIndex = customIdeasLength, title = 'New Idea' } =
@@ -29,10 +31,6 @@ function NewIdeaScreen({ route, navigation, doUpsertIdea, customIdeasLength }) {
     }));
 
   function onClickSave() {
-    if (state.isEnabled) {
-      console.log('TODO: send to server');
-    }
-
     const upsertIdeaId = idea.id || new Date().getTime();
     doUpsertIdea({ text: state.text, id: upsertIdeaId });
 
@@ -40,6 +38,14 @@ function NewIdeaScreen({ route, navigation, doUpsertIdea, customIdeasLength }) {
       ...previousState,
       isSaved: true,
     }));
+
+    if (state.isEnabled) {
+      try {
+        graphQLClient.request(getQueryAddSuggestion(state.text));
+      } catch (e) {
+        console.log('failed to submit suggestion');
+      }
+    }
 
     setTimeout(() => {
       navigation.dispatch(
