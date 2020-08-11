@@ -96,7 +96,9 @@ function ResponseBar({
           style={[
             styles.iconCircle,
             {
-              backgroundColor: Colors.lightPrimary,
+              backgroundColor: disliked
+                ? Colors.accentPrimary
+                : Colors.lightPrimary,
             },
           ]}>
           <Icon

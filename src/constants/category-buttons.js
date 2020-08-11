@@ -35,6 +35,18 @@ const categoryButtons = [
       image: require('../assets/images/pets.jpg'),
     },
   ],
+  [
+    {
+      name: 'crafts',
+      label: 'Crafts',
+      image: require('../assets/images/crafts.jpg'),
+    },
+    {
+      name: 'food',
+      label: 'Food',
+      image: require('../assets/images/food.jpg'),
+    },
+  ],
 ];
 
 export default categoryButtons;
