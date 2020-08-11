@@ -54,7 +54,6 @@ function ResponseBar({
   }
 
   function handleDeleteIdea() {
-    console.log('deletIdea');
     doDeleteIdea({ id: idea.id });
     onDeleteIdea(idea.id);
   }

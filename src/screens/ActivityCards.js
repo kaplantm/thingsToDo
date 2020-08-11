@@ -67,12 +67,10 @@ function ActivityCardsScreen({
   const [loading, setLoading] = useState(
     !isCustom && !sentiment ? true : false,
   );
-  console.log(' !isCustom && !sentiment', !isCustom && !sentiment, loading);
   const [ideas, setIdeas] = useState(() =>
     getInitialState({ sentiment, isCustom, sentimentalIdeas, customIdeas }),
   );
 
-  console.log({ startId });
   const startingIndex =
     isCustom && startId ? findIndexOfObjWithId(ideas, startId) : 0;
   const [index, setIndex] = useState(startingIndex);
@@ -88,11 +86,10 @@ function ActivityCardsScreen({
             );
         const todos = category ? result?.category?.todos : result?.todos;
         if (todos) {
-          // console.log('****', { data: todos });
           setIdeas(shuffleArray(todos));
         }
       } catch (e) {
-        console.log('*****', { e });
+        console.log('Failed to get ideas', { e });
       }
       setLoading(false);
     }
@@ -132,12 +129,10 @@ function ActivityCardsScreen({
   }
 
   function conditionalRemoveFromLimboForRestoreIdea(id) {
-    console.log('conditionalRemoveFromLimboForRestoreIdea');
     const indexInLimbo = limboIdeas.indexOf(id);
     if (indexInLimbo !== -1) {
       let limboIdeasCopy = [...limboIdeas];
       limboIdeasCopy.splice(indexInLimbo, 1);
-      console.log({ limboIdeasCopy, limboIdeas });
       setLimboIdeas(limboIdeasCopy);
     }
   }

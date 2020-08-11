@@ -43,7 +43,7 @@ function NewIdeaScreen({ route, navigation, doUpsertIdea, customIdeasLength }) {
       try {
         graphQLClient.request(getQueryAddSuggestion(state.text));
       } catch (e) {
-        console.log('failed to submit suggestion');
+        console.log('Failed to submit suggestion');
       }
     }
 

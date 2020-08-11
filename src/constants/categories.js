@@ -54,5 +54,4 @@ export const categoriesArrayWithoutFiles = Object.keys(categories).map(
   }),
 );
 
-console.log({ categoriesArrayWithoutFiles });
 export default categories;

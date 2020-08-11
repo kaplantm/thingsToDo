@@ -31,7 +31,7 @@ const ideasSlice = createSlice({
     deleteIdea(state, action) {
       const { id } = action.payload;
       const index = findIndexOfObjWithId(state.customIdeas, id);
-      console.log('deleteIdea', { id, index });
+
       if (index !== -1) {
         state.customIdeas.splice(index, 1);
       }
@@ -41,11 +41,6 @@ const ideasSlice = createSlice({
       const { idea, sentiment } = action.payload;
       state.sentimentalIdeas[idea.id] = { ...idea, sentiment };
 
-      console.log(
-        ' state.ideaSentimentMa?',
-        state.sentimentalIdeas,
-        // state.sentimentalIdeas,
-      );
       return state;
     },
   },

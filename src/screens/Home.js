@@ -86,6 +86,13 @@ function HomeScreen({ navigation, ideas }) {
             <Explore navigation={navigation} />
           </View>
         </View>
+        <View>
+          <Text style={styles.warning}>
+            Some of activities listed in this app require adult assistance or
+            surpervision. Always make sure to tell an adult where you. Ask
+            before using a stove or other tools and equipment.
+          </Text>
+        </View>
       </ScrollView>
     </Page>
   );
@@ -153,6 +160,12 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 20,
+  },
+  warning: {
+    marginTop: 30,
+    padding: 10,
+    fontSize: 16,
+    color: Colors.lightestGreyscale,
   },
 });
 
