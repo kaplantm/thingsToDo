@@ -1,0 +1,586 @@
+[
+  {
+    "text": "Play bingo (add a prize, like candy bars or ice pops)",
+    "icon": "🍫",
+    "id": "5f31cfe64bccdf28b4d2bbe0"
+  },
+  {
+    "text": "Lego challenge - build as high as you can!",
+    "icon": "🗼",
+    "id": "5f31d2e94bccdf28b4d2bbe6"
+  },
+  {
+    "text": "Draw a sketch or floorplan of your dream home",
+    "icon": "🏡",
+    "id": "5f31d2e94bccdf28b4d2bbe7"
+  },
+  {
+    "text": "Make a desssert! Maybe mud pudding, cupcakes or an ice cream sundae?",
+    "icon": "🧁",
+    "id": "5f31d4e34bccdf28b4d2bbe8"
+  },
+  {
+    "text": "Invent a fruit smoothie with an unexpected ingredient. Is it any good?",
+    "icon": "🍇",
+    "id": "5f31d4e34bccdf28b4d2bbe9"
+  },
+  {
+    "text": "Find a book around that you haven't read yet - give it a try",
+    "icon": "📕",
+    "id": "5f31d4e34bccdf28b4d2bbea"
+  },
+  {
+    "text": "Host a trivia gameshow! (you can do this over video call too)",
+    "icon": "🎬",
+    "id": "5f31d4e34bccdf28b4d2bbeb"
+  },
+  {
+    "text": "Have a birthday party for your pet. Give them a hat and a special treat",
+    "icon": "🥳",
+    "id": "5f31d6564bccdf28b4d2bbed"
+  },
+  {
+    "text": "Put on a household talent show - invite others by video call!",
+    "icon": "🎤",
+    "id": "5f31d8f24bccdf28b4d2bbf0"
+  },
+  {
+    "text": "Start a creative journal - draw, write, color, add stickers",
+    "icon": "📓",
+    "id": "5f31d8f24bccdf28b4d2bbf2"
+  },
+  {
+    "text": "Create your own coded language or alphabet. Have someone try to crack a coded message",
+    "icon": "⍨",
+    "id": "5f31dbeb4bccdf28b4d2bbf8"
+  },
+  {
+    "text": "Learn a new card game, like solitaire, poker, or spoons",
+    "icon": "♣️",
+    "id": "5f31dbeb4bccdf28b4d2bbfb"
+  },
+  {
+    "text": "Paper mache over a balloon to make a planet (Bonus: fill it with candy and use it as a pinata!)",
+    "icon": "🌎",
+    "id": "5f31dd2b4bccdf28b4d2bbfe"
+  },
+  {
+    "text": "Play pictionary (on paper, or level up with pancake pictionary!)",
+    "icon": "🥞",
+    "id": "5f31dd2b4bccdf28b4d2bbff"
+  },
+  {
+    "text": "Turn a potatoe or carrot into an instrument. Try to play a song",
+    "icon": "🥕",
+    "id": "5f31de6b4bccdf28b4d2bc03"
+  },
+  {
+    "text": "Find something old or broken and take it apart (telephone, VCR, radio etc.)",
+    "icon": "📻",
+    "id": "5f31de6b4bccdf28b4d2bc04"
+  },
+  {
+    "text": "Put on a play or film a skit",
+    "icon": "🎭",
+    "id": "5f31dfff4bccdf28b4d2bc05"
+  },
+  {
+    "text": "Watch a movie on mute. Make up the words",
+    "icon": "🍿",
+    "id": "5f31dfff4bccdf28b4d2bc06"
+  },
+  {
+    "text": "Complete a puzzle as fast as you can",
+    "icon": "🧩",
+    "id": "5f31dfff4bccdf28b4d2bc08"
+  },
+  {
+    "text": "Learn how to make a website",
+    "icon": "👩🏾‍💻",
+    "id": "5f31e12e4bccdf28b4d2bc0b"
+  },
+  {
+    "text": "Make ice cream or pudding",
+    "icon": "🍦",
+    "id": "5f31e12e4bccdf28b4d2bc0d"
+  },
+  {
+    "text": "Make something with origami",
+    "icon": "📃",
+    "id": "5f31e35e4bccdf28b4d2bc0f"
+  },
+  {
+    "text": "Make homemade pasta. Make a fun pasta shape",
+    "icon": "🍝",
+    "id": "5f31e35e4bccdf28b4d2bc10"
+  },
+  {
+    "text": "Make paper airplanes. Try to hit a target or have a competition for the plane that flys the farthest and fastest.",
+    "icon": "🛩",
+    "id": "5f31e50f4bccdf28b4d2bc15"
+  },
+  {
+    "text": "Make homemade pizza. Make the dough or use tortillas",
+    "icon": "🍕",
+    "id": "5f31e50f4bccdf28b4d2bc16"
+  },
+  {
+    "text": "Learn to make balloon animals, then walk your balloon dog",
+    "icon": "🎈",
+    "id": "5f31e50f4bccdf28b4d2bc17"
+  },
+  {
+    "text": "Paint some backdrops on cardboard and have a photoshoot",
+    "icon": "🖼",
+    "id": "5f31e50f4bccdf28b4d2bc18"
+  },
+  {
+    "text": "Go bowling, or make a DIY bowling alley in a hallway",
+    "icon": "🎳",
+    "id": "5f31e7344bccdf28b4d2bc1a"
+  },
+  {
+    "text": "Watercolor (ideas: flowers, hot air balloon, mountains)",
+    "icon": "🖌",
+    "id": "5f31e7344bccdf28b4d2bc1b"
+  },
+  {
+    "text": "Learn a magic trick and perform it",
+    "icon": "🧙🏼‍♀️",
+    "id": "5f31e7344bccdf28b4d2bc1c"
+  },
+  {
+    "text": "Draw a fantasy animal and make up a name for it",
+    "icon": "🐉",
+    "id": "5f31e7344bccdf28b4d2bc1e"
+  },
+  {
+    "text": "Do some nail art - make a picture or design with nail polish",
+    "icon": "💅🏼",
+    "id": "5f31e8f84bccdf28b4d2bc1f"
+  },
+  {
+    "text": "Sew a pillow, pillowcase or a bag",
+    "icon": "🧵",
+    "id": "5f31e8f84bccdf28b4d2bc20"
+  },
+  {
+    "text": "Start learning a new language",
+    "icon": "🇫🇷",
+    "id": "5f31e8f84bccdf28b4d2bc21"
+  },
+  { "text": "Play charades", "icon": "🎭", "id": "5f31e8f84bccdf28b4d2bc22" },
+  {
+    "text": "Teach your pet a new trick",
+    "icon": "🐶",
+    "id": "5f31e8f84bccdf28b4d2bc23"
+  },
+  {
+    "text": "Make an origami fortune teller",
+    "icon": "📃",
+    "id": "5f31e8f84bccdf28b4d2bc24"
+  },
+  { "text": "Do yoga", "icon": "🧘🏽‍♀️", "id": "5f31e8f84bccdf28b4d2bc25" },
+  {
+    "text": "Make friendship bracelets",
+    "icon": "💎",
+    "id": "5f31ea6d4bccdf28b4d2bc26"
+  },
+  {
+    "text": "Make your own picture book or scrapbook",
+    "icon": "📒",
+    "id": "5f31ea6d4bccdf28b4d2bc27"
+  },
+  { "text": "Draw a comic", "icon": "🦸🏻‍♂️", "id": "5f31ea6d4bccdf28b4d2bc28" },
+  {
+    "text": "Make puppets and perform a puppet show",
+    "icon": "🎭",
+    "id": "5f31ea6d4bccdf28b4d2bc29"
+  },
+  {
+    "text": "Make a new board game or make up new rules for an existing game. Play it",
+    "icon": "🎲",
+    "id": "5f31ea6d4bccdf28b4d2bc2a"
+  },
+  {
+    "text": "Play uno or go fish",
+    "icon": "🃏",
+    "id": "5f31ea6d4bccdf28b4d2bc2b"
+  },
+  {
+    "text": "Read a book in a pillow fort",
+    "icon": "📚",
+    "id": "5f31ec864bccdf28b4d2bc2c"
+  },
+  {
+    "text": "Make homemade slime",
+    "icon": "🧪",
+    "id": "5f31ec864bccdf28b4d2bc2d"
+  },
+  {
+    "text": "Clean out your closet and donate old clothes",
+    "icon": "👖",
+    "id": "5f31ec864bccdf28b4d2bc31"
+  },
+  {
+    "text": "Work on a crossword or sudoku puzzle",
+    "icon": "🧩",
+    "id": "5f31ed844bccdf28b4d2bc34"
+  },
+  {
+    "text": "Play a video game for a hour",
+    "icon": "🎮",
+    "id": "5f31ed844bccdf28b4d2bc35"
+  },
+  {
+    "text": "Have a tea party and talk in accents",
+    "icon": "☕️",
+    "id": "5f31efb74bccdf28b4d2bc3e"
+  },
+  {
+    "text": "Write to a letter to your grandparents or a friend",
+    "icon": "✉️",
+    "id": "5f31efb74bccdf28b4d2bc41"
+  },
+  {
+    "text": "Make homemade jam",
+    "icon": "👨🏾‍🍳",
+    "id": "5f31f1534bccdf28b4d2bc43"
+  },
+  {
+    "text": "Play hide n' seek",
+    "icon": "🕵🏻‍♂️",
+    "id": "5f31f3ea4bccdf28b4d2bc49"
+  },
+  { "text": "Play marco polo", "icon": "🕵🏻‍♂️", "id": "5f31f3ea4bccdf28b4d2bc4a" },
+  { "text": "Play Minecraft", "icon": "🎮", "id": "5f31f3ea4bccdf28b4d2bc4c" },
+  {
+    "text": "Write a poem or make up jokes",
+    "icon": "🤪",
+    "id": "5f31f3ea4bccdf28b4d2bc4d"
+  },
+  {
+    "text": "Make salsa or guacamole",
+    "icon": "🥑",
+    "id": "5f31f5634bccdf28b4d2bc4e"
+  },
+  {
+    "text": "Make a map of your neighborhood. Highlight everywhere you're walked or biked.",
+    "icon": "🚲",
+    "id": "5f31f5634bccdf28b4d2bc4f"
+  },
+  {
+    "text": "Make juice popsicles. Freeze them in layers or mix juices for a twist",
+    "icon": "🧃",
+    "id": "5f31f5634bccdf28b4d2bc50"
+  },
+  {
+    "text": "Make a maze for your pet",
+    "icon": "🐹",
+    "id": "5f31f5634bccdf28b4d2bc52"
+  },
+  { "text": "Learn a dance", "icon": "💃🏼", "id": "5f31f6634bccdf28b4d2bc56" },
+  {
+    "text": "Play Monopoly or Life",
+    "icon": "💵",
+    "id": "5f31f7b84bccdf28b4d2bc57"
+  },
+  {
+    "text": "Play Trouble or Sorry",
+    "icon": "🎲",
+    "id": "5f31f7b84bccdf28b4d2bc58"
+  },
+  {
+    "text": "Play Clue or Risk",
+    "icon": "🗺",
+    "id": "5f31f7b84bccdf28b4d2bc59"
+  },
+  {
+    "text": "Play Checkers or Chess",
+    "icon": "♟",
+    "id": "5f31f7b84bccdf28b4d2bc5a"
+  },
+  { "text": "Play Twister", "icon": "🔴", "id": "5f31f7b84bccdf28b4d2bc5b" },
+  {
+    "text": "Play Connect Four or Jenga",
+    "icon": "🔵",
+    "id": "5f31f7b84bccdf28b4d2bc5c"
+  },
+  {
+    "text": "Play Candy Land or Apples to Apples",
+    "icon": "🍭",
+    "id": "5f31f7b84bccdf28b4d2bc5d"
+  },
+  {
+    "text": "Make a volcano with baking soda and vinegar",
+    "icon": "🌋",
+    "id": "5f31f95b4bccdf28b4d2bc5f"
+  },
+  { "text": "Make rock candy", "icon": "🍬", "id": "5f31f95b4bccdf28b4d2bc60" },
+  { "text": "Make Oobleck", "icon": "👩🏾‍🔬", "id": "5f31f95b4bccdf28b4d2bc61" },
+  {
+    "text": "Draw a portrait of your pet",
+    "icon": "🐹",
+    "id": "5f31fb584bccdf28b4d2bc62"
+  },
+  {
+    "text": "Create your own list of your favorite things to do",
+    "icon": "❤️",
+    "id": "5f31fb584bccdf28b4d2bc63"
+  },
+  {
+    "text": "Put together a model (a plane, car, ship, etc.)",
+    "icon": "✈️",
+    "id": "5f31fb584bccdf28b4d2bc65"
+  },
+  {
+    "text": "Bake cookies (or make no-bake cookies)",
+    "icon": "🍪",
+    "id": "5f31fb584bccdf28b4d2bc67"
+  },
+  {
+    "text": "Sort coins and look for wheat pennies",
+    "icon": "💰",
+    "id": "5f31fc834bccdf28b4d2bc6a"
+  },
+  {
+    "text": "Make ice cream floats (rootbeer or orange creamsicle, or invent your own)",
+    "icon": "🍦",
+    "id": "5f31fea14bccdf28b4d2bc6e"
+  },
+  {
+    "text": "Learn all the words to your favorite song",
+    "icon": "🎼",
+    "id": "5f31fea14bccdf28b4d2bc6f"
+  },
+  {
+    "text": "Play Scattergories or Scrabble",
+    "icon": "🎼",
+    "id": "5f31fea14bccdf28b4d2bc70"
+  },
+  {
+    "text": "Make homemade playdough",
+    "icon": "👩🏼‍🍳",
+    "id": "5f3200094bccdf28b4d2bc71"
+  },
+  {
+    "text": "Play 'guess that song'",
+    "icon": "🎶",
+    "id": "5f3200094bccdf28b4d2bc72"
+  },
+  { "text": "Try a new food", "icon": "🍣", "id": "5f3200094bccdf28b4d2bc73" },
+  {
+    "text": "Try to solve some riddles",
+    "icon": "❓",
+    "id": "5f3200094bccdf28b4d2bc74"
+  },
+  {
+    "text": "Watch 'How its Made'",
+    "icon": "👷🏽‍♂️",
+    "id": "5f3200094bccdf28b4d2bc75"
+  },
+  { "text": "Watch a movie", "icon": "🎞", "id": "5f3200094bccdf28b4d2bc76" },
+  {
+    "text": "Draw a new cover for a book you love",
+    "icon": "📕",
+    "id": "5f32021c4bccdf28b4d2bc7a"
+  },
+  {
+    "text": "Film and edit a trailer for a movie you make up",
+    "icon": "🎬",
+    "id": "5f32021c4bccdf28b4d2bc7b"
+  },
+  {
+    "text": "Make a video for your future self - five years from now, graduation, wedding etc.",
+    "icon": "📹",
+    "id": "5f32021c4bccdf28b4d2bc7c"
+  },
+  { "text": "Do facepaint", "icon": "🎨", "id": "5f32021c4bccdf28b4d2bc7d" },
+  {
+    "text": "Call a relative and interview them. Learn more about your family's history",
+    "icon": "👩‍👧‍👦",
+    "id": "5f3205824bccdf28b4d2bc7e"
+  },
+  {
+    "text": "Make a family tree",
+    "icon": "👨‍👩‍👧‍👦",
+    "id": "5f3205824bccdf28b4d2bc7f"
+  },
+  {
+    "text": "Research a job you think is interesting. Find out more about what they do",
+    "icon": "👩🏻‍🏫",
+    "id": "5f3205824bccdf28b4d2bc80"
+  },
+  {
+    "text": "Make a house of cards...then topple it",
+    "icon": "🃏",
+    "id": "5f3205824bccdf28b4d2bc81"
+  },
+  {
+    "text": "Use cardboard to make a car or marble racing ramp",
+    "icon": "🚙",
+    "id": "5f3205824bccdf28b4d2bc82"
+  },
+  {
+    "text": "Watch Steve Irwin, the 'Crocodile Hunter'",
+    "icon": "🐊",
+    "id": "5f3205824bccdf28b4d2bc84"
+  },
+  {
+    "text": "Make a no-sew fleece tie blanket",
+    "icon": "🧵",
+    "id": "5f3205824bccdf28b4d2bc86"
+  },
+  {
+    "text": "Braid hair (yours or someone elses)",
+    "icon": "💁🏾‍♀️",
+    "id": "5f3206c84bccdf28b4d2bc8a"
+  },
+  {
+    "text": "Create marble racing tracks out of old paper towel rolls",
+    "icon": "🏁",
+    "id": "5f320bfe4bccdf28b4d2bc8c"
+  },
+  {
+    "text": "Learn how to juggle",
+    "icon": "🃏",
+    "id": "5f320bfe4bccdf28b4d2bc8d"
+  },
+  {
+    "text": "Recreate a famous artwork",
+    "icon": "👨🏽‍🎨",
+    "id": "5f320bfe4bccdf28b4d2bc8f"
+  },
+  {
+    "text": "Play Red Light Green Light or Simon Says",
+    "icon": "🚦",
+    "id": "5f320bfe4bccdf28b4d2bc91"
+  },
+  {
+    "text": "Have a building challenge using ALL the Lincoln logs or Legos",
+    "icon": "👷🏻‍♀️",
+    "id": "5f320cfe4bccdf28b4d2bc93"
+  },
+  {
+    "text": "Make a flipbook animation",
+    "icon": "📽",
+    "id": "5f320cfe4bccdf28b4d2bc95"
+  },
+  {
+    "text": "Make your own whip cream or butter",
+    "icon": "🥯",
+    "id": "5f320df54bccdf28b4d2bc99"
+  },
+  {
+    "text": "Make animal masks out of paper plates",
+    "icon": "🐅",
+    "id": "5f320fe14bccdf28b4d2bc9b"
+  },
+  {
+    "text": "Practice speed stacking cups",
+    "icon": "🏁",
+    "id": "5f320fe14bccdf28b4d2bc9c"
+  },
+  {
+    "text": "Learn to do the 'cup song'",
+    "icon": "🎶",
+    "id": "5f320fe14bccdf28b4d2bc9d"
+  },
+  {
+    "text": "Paint with shaving cream",
+    "icon": "🎨",
+    "id": "5f320fe14bccdf28b4d2bc9f"
+  },
+  {
+    "text": "Play dress up or give someone a makeover",
+    "icon": "👗",
+    "id": "5f3210fd4bccdf28b4d2bca2"
+  },
+  {
+    "text": "Have a NERF war. Setup obstacles and barricades",
+    "icon": "🔫",
+    "id": "5f3210fd4bccdf28b4d2bca3"
+  },
+  {
+    "text": "Rearrange your bedroom",
+    "icon": "🛏",
+    "id": "5f32123f4bccdf28b4d2bca5"
+  },
+  {
+    "text": "Make sponge paint stamps",
+    "icon": "🧽",
+    "id": "5f32123f4bccdf28b4d2bca6"
+  },
+  {
+    "text": "Play musical chairs",
+    "icon": "🎵",
+    "id": "5f32123f4bccdf28b4d2bca7"
+  },
+  { "text": "Learn to Knit", "icon": "🧶", "id": "5f3212b04bccdf28b4d2bca8" },
+  {
+    "text": "Make a map of places in the world you'd like to visit",
+    "icon": "🗾",
+    "id": "5f3212b04bccdf28b4d2bca9"
+  },
+  {
+    "text": "Have a pillow fight",
+    "icon": "❗️",
+    "id": "5f3212b04bccdf28b4d2bcaa"
+  },
+  {
+    "text": "Play 20 Questions",
+    "icon": "❓",
+    "id": "5f3214ea4bccdf28b4d2bcae"
+  },
+  { "text": "Do a Mad Lib", "icon": "⁉️", "id": "5f3214ea4bccdf28b4d2bcaf" },
+  {
+    "text": "Rewrite the lyrics of a song",
+    "icon": "🎸",
+    "id": "5f3214ea4bccdf28b4d2bcb0"
+  },
+  {
+    "text": "Start a coin collection. Try to find a quarter from every state, territory and national park",
+    "icon": "🔍",
+    "id": "5f32e8b04bccdf28b4d2bcbf"
+  },
+  {
+    "text": "Make homemade bread",
+    "icon": "🥖",
+    "id": "5f32e8b04bccdf28b4d2bcc0"
+  },
+  {
+    "text": "Decorate cookies, cupcakes or gingerbread house",
+    "icon": "🧁",
+    "id": "5f32e8b04bccdf28b4d2bcc1"
+  },
+  {
+    "text": "Play 'Heads Up' or 'Catchphrase'",
+    "icon": "🗯",
+    "id": "5f32e8b04bccdf28b4d2bcc2"
+  },
+  {
+    "text": "Make a fun background for your fish tank",
+    "icon": "🐟",
+    "id": "5f32e8b04bccdf28b4d2bcc3"
+  },
+  {
+    "text": "Make chocolate-dipped bananas or pretzels",
+    "icon": "🍌",
+    "id": "5f32e95a4bccdf28b4d2bcc5"
+  },
+  {
+    "text": "Make bagel, english muffin, or quesadilla pizzas",
+    "icon": "🥯",
+    "id": "5f32e95a4bccdf28b4d2bcc6"
+  },
+  {
+    "text": "Design your own app",
+    "icon": "📱",
+    "id": "5f32e99a4bccdf28b4d2bcc7"
+  },
+  {
+    "text": "Have a pancake buffet with a bunch of toppings",
+    "icon": "🥞",
+    "id": "5f32f3564bccdf28b4d2bcc8"
+  }
+]

@@ -1,0 +1,251 @@
+[
+  {
+    "text": "Build a fairy or hobbit house",
+    "icon": "🧚🏽‍♀️",
+    "id": "5f31cfe64bccdf28b4d2bbe1"
+  },
+  {
+    "text": "Build a tent or teepee",
+    "icon": "⛺️",
+    "id": "5f31cfe64bccdf28b4d2bbe2"
+  },
+  {
+    "text": "Play four square",
+    "icon": "🏀",
+    "id": "5f31cfe64bccdf28b4d2bbe3"
+  },
+  {
+    "text": "Make up a scavenger hunt of around your neighborhood or backyard",
+    "icon": "🏘",
+    "id": "5f31d2e94bccdf28b4d2bbe4"
+  },
+  {
+    "text": "Learn to pogo stick, jump rope or hula hoop",
+    "icon": "👟",
+    "id": "5f31d8f24bccdf28b4d2bbf4"
+  },
+  {
+    "text": "Play backyard soccer. Make DIY goal posts",
+    "icon": "⚽️",
+    "id": "5f31d9ce4bccdf28b4d2bbf6"
+  },
+  {
+    "text": "Play frisbee golf. Trying throwing it into a bucket, can or box",
+    "icon": "🗑",
+    "id": "5f31d9fa4bccdf28b4d2bbf7"
+  },
+  {
+    "text": "Go for a walk, jog or run",
+    "icon": "🏃🏽‍♀️",
+    "id": "5f31dc6c4bccdf28b4d2bbfc"
+  },
+  {
+    "text": "Play basketball, knockout or just shoot some hoops",
+    "icon": "⛹🏼‍♂️",
+    "id": "5f31de6b4bccdf28b4d2bc01"
+  },
+  { "text": "Go for a hike", "icon": "⛰", "id": "5f31e12e4bccdf28b4d2bc0a" },
+  {
+    "text": "Have a water balloon fight",
+    "icon": "🔫",
+    "id": "5f31e12e4bccdf28b4d2bc0c"
+  },
+  {
+    "text": "Make an obstacle course. Try to complete it as many times or as fast as you can",
+    "icon": "🏃🏽‍♂️",
+    "id": "5f31e35e4bccdf28b4d2bc11"
+  },
+  {
+    "text": "Play tennis or badminton",
+    "icon": "🏸",
+    "id": "5f31e7344bccdf28b4d2bc1d"
+  },
+  { "text": "Do yoga", "icon": "🧘🏽‍♀️", "id": "5f31e8f84bccdf28b4d2bc25" },
+  { "text": "Go geocaching", "icon": "🧭", "id": "5f31ec864bccdf28b4d2bc2e" },
+  {
+    "text": "Go apple or berry picking",
+    "icon": "🍎",
+    "id": "5f31ec864bccdf28b4d2bc2f"
+  },
+  {
+    "text": "Go swimming at a pool or lake",
+    "icon": "🏊🏾‍♀️",
+    "id": "5f31ec864bccdf28b4d2bc33"
+  },
+  {
+    "text": "Bike, scooter or rollerblade",
+    "icon": "🚲",
+    "id": "5f31ed844bccdf28b4d2bc36"
+  },
+  {
+    "text": "Play floor hockey",
+    "icon": "🏒",
+    "id": "5f31ed844bccdf28b4d2bc37"
+  },
+  { "text": "Go ice skating", "icon": "⛸", "id": "5f31ed844bccdf28b4d2bc38" },
+  {
+    "text": "Go the beach or a park",
+    "icon": "🏖",
+    "id": "5f31f1534bccdf28b4d2bc42"
+  },
+  {
+    "text": "Smash old fruit with a tennis racket",
+    "icon": "🍎",
+    "id": "5f31f1534bccdf28b4d2bc44"
+  },
+  {
+    "text": "Play mini golf. Visit a course or make your own course at home.",
+    "icon": "🏌🏼‍♀️",
+    "id": "5f31f1534bccdf28b4d2bc47"
+  },
+  { "text": "Wash the car", "icon": "🚙", "id": "5f31f3ea4bccdf28b4d2bc48" },
+  {
+    "text": "Play hide n' seek",
+    "icon": "🕵🏻‍♂️",
+    "id": "5f31f3ea4bccdf28b4d2bc49"
+  },
+  { "text": "Play marco polo", "icon": "🕵🏻‍♂️", "id": "5f31f3ea4bccdf28b4d2bc4a" },
+  {
+    "text": "Dive for toys in a pool",
+    "icon": "🏊‍♂️",
+    "id": "5f31f3ea4bccdf28b4d2bc4b"
+  },
+  {
+    "text": "Play fetch with your pet",
+    "icon": "🐕",
+    "id": "5f31f5634bccdf28b4d2bc51"
+  },
+  {
+    "text": "Collect rocks, sea shells or sea glass at the beach",
+    "icon": "🌊",
+    "id": "5f31f6634bccdf28b4d2bc53"
+  },
+  { "text": "Learn a dance", "icon": "💃🏼", "id": "5f31f6634bccdf28b4d2bc56" },
+  {
+    "text": "Bounce on a trampoline",
+    "icon": "🆙",
+    "id": "5f31fea04bccdf28b4d2bc6c"
+  },
+  {
+    "text": "Play flashlight tag",
+    "icon": "🔦",
+    "id": "5f32021c4bccdf28b4d2bc78"
+  },
+  {
+    "text": "Learn to do a cartwheel",
+    "icon": "🤸🏼‍♀️",
+    "id": "5f32021c4bccdf28b4d2bc79"
+  },
+  {
+    "text": "Play baseball / softball / kickball",
+    "icon": "⚾️",
+    "id": "5f3205824bccdf28b4d2bc83"
+  },
+  {
+    "text": "Visit a National Park",
+    "icon": "🦌",
+    "id": "5f320bfe4bccdf28b4d2bc8e"
+  },
+  { "text": "Play freeze tag", "icon": "🏃🏽‍♂️", "id": "5f320bfe4bccdf28b4d2bc90" },
+  {
+    "text": "Play Red Light Green Light or Simon Says",
+    "icon": "🚦",
+    "id": "5f320bfe4bccdf28b4d2bc91"
+  },
+  {
+    "text": "Go out during / after rain. Stomp in puddles and count worms",
+    "icon": "🌧",
+    "id": "5f320cfe4bccdf28b4d2bc92"
+  },
+  {
+    "text": "Go canoeing or kayaking",
+    "icon": "🛶",
+    "id": "5f320df54bccdf28b4d2bc97"
+  },
+  {
+    "text": "Set up a slip and slide",
+    "icon": "🧼",
+    "id": "5f320df54bccdf28b4d2bc98"
+  },
+  {
+    "text": "Walk your dog (or a neighbor's dog)",
+    "icon": "🐕",
+    "id": "5f320fe14bccdf28b4d2bc9e"
+  },
+  { "text": "Play wall ball", "icon": "🎾", "id": "5f3210fd4bccdf28b4d2bca4" },
+  {
+    "text": "Play musical chairs",
+    "icon": "🎵",
+    "id": "5f32123f4bccdf28b4d2bca7"
+  },
+  {
+    "text": "Have a pillow fight",
+    "icon": "❗️",
+    "id": "5f3212b04bccdf28b4d2bcaa"
+  },
+  {
+    "text": "Play Capture the Flag",
+    "icon": "🚩",
+    "id": "5f3213d74bccdf28b4d2bcac"
+  },
+  {
+    "text": "Play dodgeball or volleyball",
+    "icon": "🏐",
+    "id": "5f3213d74bccdf28b4d2bcad"
+  },
+  {
+    "text": "Play flag football",
+    "icon": "🏈",
+    "id": "5f32cef34bccdf28b4d2bcb1"
+  },
+  {
+    "text": "Have a relay race",
+    "icon": "🏃🏾‍♂️",
+    "id": "5f32cef34bccdf28b4d2bcb2"
+  },
+  {
+    "text": "Go Sledding or surfing",
+    "icon": "🛷",
+    "id": "5f32cef34bccdf28b4d2bcb3"
+  },
+  {
+    "text": "Build a snowman (doesn't have to be out of snow!)",
+    "icon": "⛄️",
+    "id": "5f32cef34bccdf28b4d2bcb4"
+  },
+  {
+    "text": "Climb a tree or go rock climbing",
+    "icon": "🧗🏼‍♀️",
+    "id": "5f32cef34bccdf28b4d2bcb5"
+  },
+  {
+    "text": "Explore tidepools at the beach",
+    "icon": "🦑",
+    "id": "5f32d0044bccdf28b4d2bcb8"
+  },
+  {
+    "text": "Go to the beach and search for crabs, clams or sand dollars",
+    "icon": "🦀",
+    "id": "5f32d0044bccdf28b4d2bcb9"
+  },
+  {
+    "text": "Practice doing handstands (in or out of the pool)",
+    "icon": "🙃",
+    "id": "5f32d10a4bccdf28b4d2bcba"
+  },
+  {
+    "text": "Have a squirt gun fight",
+    "icon": "🔫",
+    "id": "5f32d10a4bccdf28b4d2bcbb"
+  },
+  {
+    "text": "Go skiing or snow boarding. If its summer, try water skiing!",
+    "icon": "⛷",
+    "id": "5f32d10a4bccdf28b4d2bcbc"
+  },
+  {
+    "text": "Time yourself running a 100 meters, then do some math to find our your top speed! Try comparing it to an animal",
+    "icon": "🐌",
+    "id": "5f32e8b04bccdf28b4d2bcc4"
+  }
+]

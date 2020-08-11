@@ -1,12 +1,12 @@
-import defaultIdeas from '../constants/defaultIdeas';
+import categories from '../constants/categories';
 
-function getIdeasLocal(filterRequirement) {
-  const filterKeys = Object.keys(filterRequirement);
-  return defaultIdeas.filter(
-    (unfilteredIdea) =>
-      // eslint-disable-next-line eqeqeq
-      !filterKeys.some((key) => unfilteredIdea[key] != filterRequirement[key]), // returns true if any of the filters
-  );
+function getIdeasLocal(category = 'all') {
+  const ideas = categories[category || 'all']?.file;
+  console.log('**************** getIdeasLocal', { category, ideas });
+  if (!category || category === 'all') {
+    return { todos: ideas };
+  }
+  return { category: { todos: ideas } };
 }
 
 export default getIdeasLocal;

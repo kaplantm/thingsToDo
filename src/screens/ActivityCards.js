@@ -14,6 +14,7 @@ import {
 } from '../api/graphql/queries';
 import { shuffleArray, findIndexOfObjWithId } from '../lib/utils';
 import { NEUTRAL_SENTIMENT } from '../constants/likes';
+import { LOCAL_IDEAS } from '../../config';
 
 // TODO: local ideas
 // TODO: remove console logs
@@ -79,14 +80,15 @@ function ActivityCardsScreen({
 
   useEffect(() => {
     async function getIdeas() {
-      console.log('get ideas *******');
       try {
-        const result = await graphQLClient.request(
-          category ? getQueryTodosInCategory(category) : getQueryTodosAll(),
-        );
+        let result = LOCAL_IDEAS
+          ? getLocalIdeas(category)
+          : await graphQLClient.request(
+              category ? getQueryTodosInCategory(category) : getQueryTodosAll(),
+            );
         const todos = category ? result?.category?.todos : result?.todos;
         if (todos) {
-          console.log('****', { data: todos });
+          // console.log('****', { data: todos });
           setIdeas(shuffleArray(todos));
         }
       } catch (e) {
