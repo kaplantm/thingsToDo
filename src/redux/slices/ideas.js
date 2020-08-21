@@ -13,6 +13,7 @@ const ideasSlice = createSlice({
       const newId = id || new Date().getTime();
 
       const index = findIndexOfObjWithId(state.customIdeas, newId);
+      console.log('**** upsertIdea', { text, newId, index });
       if (index === -1) {
         state.customIdeas.push({
           id: newId,

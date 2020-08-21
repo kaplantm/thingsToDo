@@ -12,6 +12,7 @@ import Settings from './src/screens/Settings';
 import Colors from './theme/colors';
 import NewIdeaScreen from './src/screens/NewIdea';
 import ActivityCards from './src/screens/ActivityCards';
+import AuthService from './src/components/AuthService';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const App: () => React$Node = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
+        <AuthService />
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{

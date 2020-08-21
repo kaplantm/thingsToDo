@@ -106,7 +106,7 @@ function ActivityCardsScreen({
   }
 
   let idea = ideas[index];
-
+  console.log({ idea });
   function conditionalAddToLimboForSentimentChange(newSentiment, id) {
     const indexInLimbo = limboIdeas.indexOf(id);
     const shouldBeInLimbo = sentiment && newSentiment !== sentiment;
@@ -142,6 +142,7 @@ function ActivityCardsScreen({
   }
   if (!loading && ideas.length && index > ideas.length - 1) {
     setIndex(ideas.length - 1);
+    return <Page padded={false} />;
   }
   return (
     <Page padded={false}>
@@ -155,7 +156,7 @@ function ActivityCardsScreen({
             limboIdeas={limboIdeas}
             ideas={ideas}
             setIndex={setIndex}
-            index={index - 0.1} // needed to prevent page from loading offcenter when initial index is not 0
+            index={index}
           />
           <ResponseBar
             idea={idea}

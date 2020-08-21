@@ -1,17 +1,29 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { CommonActions } from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 import { View, Text, Switch, StyleSheet, TextInput } from 'react-native';
 import Page from '../components/Page';
 import Colors, { hslaToTransparent } from '../../theme/colors';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { upsertIdea } from '../redux/slices/ideas';
-import graphQLClient from '../api/graphql/client';
-import { getQueryAddSuggestion } from '../api/graphql/queries';
+import database from '@react-native-firebase/database';
+// import graphQLClient from '../api/graphql/client';
+// import { getQueryAddSuggestion } from '../api/graphql/queries';
 
-function NewIdeaScreen({ route, navigation, doUpsertIdea, customIdeasLength }) {
-  const { idea = {}, ideaIndex = customIdeasLength, title = 'New Idea' } =
-    route.params || {};
+function NewIdeaScreen({
+  route,
+  navigation,
+  doUpsertIdea,
+  customIdeasLength,
+  user,
+}) {
+  const { idea = {}, title = 'New Idea' } = route.params || {};
+
+  useEffect(() => {
+    // assure auth isn't expired
+    auth().currentUser.getIdToken();
+  }, []);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -41,7 +53,9 @@ function NewIdeaScreen({ route, navigation, doUpsertIdea, customIdeasLength }) {
 
     if (state.isEnabled) {
       try {
-        graphQLClient.request(getQueryAddSuggestion(state.text));
+        // graphQLClient.request(getQueryAddSuggestion(state.text));
+        const newReference = database().ref('/').push();
+        newReference.set(state.text).then(() => console.log('Data updated.'));
       } catch (e) {
         console.log('Failed to submit suggestion');
       }
@@ -211,7 +225,8 @@ const styles = StyleSheet.create({
 });
 
 export default connect(
-  ({ ideas }) => ({
+  ({ ideas, user }) => ({
+    user,
     customIdeasLength: ideas.customIdeas.length,
   }),
   {

@@ -8,6 +8,8 @@ clean out test ideas from api
 lambda + ssl
 cors?
 
+com.tonarie.todothings
+
 Roadmap:
 v1 - likes, dislikes, local storage saving, new idea submission
 v2 - categories
@@ -29,3 +31,5 @@ individual
 group
 technology
 crafts
+
+https://rnfirebase.io/database/usage

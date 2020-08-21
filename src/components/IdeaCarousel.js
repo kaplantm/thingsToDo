@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dimensions } from 'react-native';
 import SideSwipe from 'react-native-sideswipe';
 import { CarouselItem } from './IdeaCarouselItem';
