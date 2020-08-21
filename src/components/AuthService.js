@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import auth from '@react-native-firebase/auth';
 import { connect } from 'react-redux';
 import { setUser } from '../redux/slices/user';

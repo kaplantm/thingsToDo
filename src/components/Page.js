@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Colors from '../../theme/colors';
 import DismissKeyboard from './DismissKeyboard';
 
 function Page({ children, padded = true, withDismissKeyboard }) {
@@ -11,7 +10,7 @@ function Page({ children, padded = true, withDismissKeyboard }) {
       <LinearGradient
         colors={['#4c669f', '#3b5998', '#192f6a']}
         style={styles.page}>
-        <SafeAreaView style={[styles.page]}>
+        <View style={[styles.page]}>
           <View
             style={[
               styles.page,
@@ -20,7 +19,7 @@ function Page({ children, padded = true, withDismissKeyboard }) {
             ]}>
             {children}
           </View>
-        </SafeAreaView>
+        </View>
       </LinearGradient>
     </Wrapper>
   );
